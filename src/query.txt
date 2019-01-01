@@ -1,0 +1,16 @@
+#get peminjam beserta tujuan pinjam, konfirmasi pinjaman, dan barang yg dipinjam
+SELECT DISTINCT p.npm,p.nama, pem.tujuan_pinjam, pem.tanggal_pinjam, pem.tanggal_pengembalian, pem.total_harga_jaminan, b.nama_barang, bd.kuantitas_dipinjam, kp.status_konfirmasi 
+FROM peminjaman as pem, peminjam as p, barang as b, barang_dipinjam as bd, konfirmasi_peminjaman as kp 
+WHERE pem.id_peminjam=p.id and b.id=bd.id_barang and bd.id_peminjaman=pem.id and kp.id_peminjaman=pem.id and p.id=1
+
+#get peminjam beserta tujuan pinjam
+SELECT p.npm,p.nama, pem.tujuan_pinjam, pem.tanggal_pinjam, pem.tanggal_pengembalian, pem.total_harga_jaminan 
+FROM peminjaman as pem, peminjam as p 
+WHERE pem.id_peminjam=p.id 
+
+
+
+#
+SELECT p.npm,p.nama, pem.tujuan_pinjam, pem.tanggal_pinjam, pem.tanggal_pengembalian, pem.total_harga_jaminan
+FROM barang_dipinjam as bd, barang as b, peminjaman as pem, peminjam as p
+WHERE bd.id_barang=b.id and bd.id_peminjaman=pem.id and pem.id_peminjam=p.id

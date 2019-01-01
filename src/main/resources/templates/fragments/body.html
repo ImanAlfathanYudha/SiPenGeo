@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<!-- Header -->
+	<nav th:fragment="header"
+		class="navbar navbar-expand navbar-dark bg-dark static-top">
+		<a class="navbar-brand mr-1" href="index.html">Sistem Peminjaman</a>
+		<button class="btn btn-link btn-sm text-white order-1 order-sm-0"
+			id="sidebarToggle" href="#">
+			<i class="fas fa-bars"></i>
+		</button>
+		<!-- Navbar Search -->
+		<div
+			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+		</div>
+		<!-- end Navbar Search-->
+		<!-- Navbar logout -->
+		<ul class="navbar-nav ml-auto ml-md-0">
+			<li class="nav-item dropdown no-arrow"><a
+				class="nav-link dropdown-toggle" href="#" data-toggle="modal"
+				data-target="#logoutModal">Logout</a></li>
+		</ul>
+		<!-- end Navbar logout -->
+	</nav>
+	<!-- end Header -->
+
+	<!-- Sidebar -->
+	<ul th:fragment="samping" class="sidebar navbar-nav">
+		<li class="nav-item dropdown"><a class="nav-link"
+			href="formPeminjaman.html" id=""> <span>Buat Peminjaman</span>
+		</a></li>
+		<li class="nav-item"><a class="nav-link" href="tableBarang.html">
+				<span>Lihat Barang Tersedia</span>
+		</a></li>
+		<li class="nav-item"><a class="nav-link" href="kirimPesan.html">
+				<span>Pesan</span>
+		</a></li>
+		<li class="nav-item"><a class="nav-link"
+			href="formProfilPengguna.html"> <span>Profil Peminjam</span></a></li>
+	</ul>
+	<!--end Sidebar -->
+	<!-- Modal Logout -->
+	<div th:fragment="modalLogout" class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Apa anda yakin
+						ingin Logout?</h5>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Tekan tombol logout untuk keluar.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" href="login.html">Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end Modal logout -->
+</body>
+
+</html>

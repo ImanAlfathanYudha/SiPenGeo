@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head">
+<title>Ubah Status Peminjaman Peminjaman </title>
+</head>
+<body id="page-top">
+		<!-- Header -->
+	<nav th:replace="fragments/body::header"></nav>
+	<!-- end Header -->
+	<div id="wrapper">
+		<!-- sidebar -->
+		<ul th:replace="fragments/body::samping">
+		</ul>
+		<!-- end sidebar -->
+		<div id="content-wrapper">
+			<div class="container-fluid">
+				<!-- Breadcrumbs-->
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+					<li class="breadcrumb-item active">Overview</li>
+				</ol>
+				<!-- Icon Cards-->
+				<div class="row"></div>
+				<!-- Area Chart Example-->
+				<div class="card mb-3"></div>
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fas fa-address-book"></i> Data Peminjam
+					</div>
+					<!-- Data Peminjam-->
+					<div class="card-body">
+						<div class="col-md-6"
+							th:each="yangPinjam,iterationStatus: ${yangPinjam}">
+							<p th:text="'Nama peminjam: '+${yangPinjam.nama}">Nama: Iman
+								Alfathan Yudhanto</p>
+							<p th:text="'NPM: '+${yangPinjam.npm}">NPM: 1406623524</p>
+							<p th:text="'Instansi: '+${yangPinjam.instansi}">Instansi:
+								Fakultas Ilmu Komputer UI</p>
+							<p th:text="'No.telepon/HP: '+${yangPinjam.telepon}">Telp/Hp:
+								081383344874</p>
+							<p th:text="'Alamat: '+${yangPinjam.alamat}">Alamat: Jalan
+								Baitussalam No.73 Beji, Depok</p>
+						</div>
+					</div>
+					<!--end Data peminjam-->
+					<!--Data pinjaman-->
+					<div class="card-header">
+						<i class="far fa-file"></i> Data Pinjaman
+					</div>
+					<div class="card-body">
+						<div th:each="peminjaman,iterationStatus: ${peminjaman}">
+							<div class="col-md-6">
+								<p th:text="'Tujuan Peminjaman: '+ ${peminjaman.tujuanPinjam}">Tujuan
+									Peminjaman: Penelitian</p>
+								<p
+									th:text="'Tempat Penggunaan: '+ ${peminjaman.tempatPeminjaman}">Tempat
+									Penggunaan: Fakultas Ilmu Komputer UI</p>
+								<p
+									th:text="'Tanggal Peminjaman: '+ ${peminjaman.tanggalPinjam}">Tanggal
+									Peminjaman: 20/01/2018</p>
+								<p
+									th:text="'Tanggal Pengembalian: '+ ${peminjaman.tanggalPengembalian}">Tanggal
+									Pengembalian: 25/01/2018</p>
+							</div>
+						</div>
+					</div>
+					<!--end Data Pinjaman-->
+
+					<!--Tabel barang-->
+					<div class="card-header">
+						<i class="fas fa-cube"></i> Barang yang Dipinjam
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-bordered" id="dataTable" width="100%"
+								cellspacing="0">
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th>Nama Alat</th>
+										<th>Kuantitas Dipinjam</th>
+									</tr>
+								</thead>
+								<div
+									th:each="listBarangDipinjam,iterationStatus: ${listBarangDipinjam}">
+									<tr>
+										<td th:text="${iterationStatus.count}">1</td>
+										<td th:text="${listBarangDipinjam.barangAsal.namaBarang}">Nama
+											barang</td>
+										<td th:text="${listBarangDipinjam.kuantitasDipinjam}">1</td>
+									</tr>
+								</div>
+							</table>
+							<p>Harga jaminan:</p>
+							<p th:text="'Rp.'+${peminjaman.totalHargaJaminan}">Rp10.000,-</p>
+						</div>
+					</div>
+					<!--end Tabel barang-->
+
+					<!--Status Peminjaman-->
+					<div class="card-header">
+						<i class="fas fa-flag-usa"></i> &#10004; Ubah Status peminjaman
+					</div>
+					<div class="card-body">
+						<form>
+							<div class="form-group">
+								<div class="form-label-group">
+									<select name="tujuanKonfirmasi">
+										<option value="Dilaporkan">Dilaporkan</option>
+										<option value="Ditolak">Ditolak</option>
+										<option value="Diterima">Diterima</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="form-label-group">
+									<textarea type="text" id="inputKeterangan" class="form-control"
+										placeholder="Tuliskan keterangan" required="required"
+										autofocus="autofocus"></textarea>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-4">
+									<a class="btn btn-primary btn-block"
+										href="">Pilih</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="card-footer small text-muted">Updated yesterday at
+					11:59 PM</div>
+			</div>
+		</div>
+		<!-- /.container-fluid -->
+		<!-- Sticky Footer -->
+		<footer class="sticky-footer">
+			<div class="container my-auto">
+				<div class="copyright text-center my-auto">
+					<span>Copyright © Your Website 2018</span>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<!-- /.content-wrapper -->
+	<!-- /#wrapper -->
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>	
+	<!-- Logout Modal-->
+	<div th:replace="fragments/body::modalLogout"></div>
+	<!-- end Logout Modal-->
+
+	<!-- jscript -->
+	<div th:replace="fragments/head::jscript"></div>
+	<!-- end jscript -->
+</body>
+</html>
