@@ -90,8 +90,8 @@
                      <div class="col-md-6">
                         <p th:text="'Tujuan Peminjaman: '+ ${peminjaman.tujuanPinjam}">Tujuan Peminjaman: Penelitian</p>
                         <p th:text="'Tempat Penggunaan: '+ ${peminjaman.tempatPeminjaman}">Tempat Penggunaan: Fakultas Ilmu Komputer UI</p>
-                        <p th:text="'Tanggal Peminjaman: '+ ${#dates.format(peminjaman.tanggalPinjam, 'dd-MMM-yyyy')}">Tanggal Peminjaman: 20/01/2018</p>
-                        <p th:text="'Tanggal Pengembalian: '+ ${#dates.format(peminjaman.tanggalPengembalian, 'dd-MMM-yyyy')}">Tanggal Pengembalian: 25/01/2018</p>
+                        <p th:text="'Tanggal Peminjaman: '+ ${peminjaman.tanggalPinjam}">Tanggal Peminjaman: 20/01/2018</p>
+                        <p th:text="'Tanggal Pengembalian: '+ ${peminjaman.tanggalPengembalian}">Tanggal Pengembalian: 25/01/2018</p>
                      </div>
                                     
                   <!--end Data Pinajman--> 

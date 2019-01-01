@@ -100,30 +100,16 @@
 										<p>Tujuan peminjaman</p>
 									</div>
 									<!--Checkbox-->
-									<div class="form-check">
-										<input type="checkbox" id="hasil-usaha" name="hasil_usaha"
-											value="Hasil Usaha"></input> <label class="label-text"
-											for="hasil-usaha">Kuliah Lapang</label>
-									</div>
-									<div class="form-check">
-										<input type="checkbox" id="jasa-profesi" name="jasa_profesi"
-											value="Jasa Profesi"></input> <label class="label-text"
-											for="jasa-profesi">Praktikum</label>
-									</div>
-									<div class="form-check">
-										<input type="checkbox" id="deposito-tabungan"
-											name="deposito_tabungan" value="Deposito / Tabungan"></input>
-										<label class="label-text" for="deposito-tabungan">Survey
-											TA</label>
-									</div>
-									<div class="form-check">
-										<input type="checkbox" id="deposito-tabungan"
-											name="deposito_tabungan" value="Deposito / Tabungan"></input>
-										<label class="label-text" for="deposito-tabungan">Penelitian</label>
-									</div>
+									<select name="tujuanPinjam">
+										<option th:value="''">--Pilih Tujuan Peminjaman</option>
+										<option th:value="'Kuliah Lapang'">Kuliah Lapang</option>
+										<option th:value="'Praktikum'">Praktikum</option>
+										<option th:value="'Survey TA'">Survey TA</option>
+										<option th:value="'Penelitian'">Penelitian</option>
+									</select>
 									<div id="other-input-container"></div>
 								</div>
-								<!--Checkbox-->
+								<!--end Checkbox-->
 							</div>
 							<div class="form-group">
 								<div class="col-md-6">
