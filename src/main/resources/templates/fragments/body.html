@@ -28,21 +28,24 @@
 	<!-- Sidebar -->
 	<ul th:fragment="samping" class="sidebar navbar-nav">
 		<li class="nav-item dropdown"><a class="nav-link"
-			th:href="'/sipen/TambahPeminjaman/'"> <span>Buat Peminjaman</span>
-		</a></li>
-		<li class="nav-item"><a class="nav-link" href="tableBarang.html">
-				<span>Lihat Barang Tersedia</span>
-		</a></li>
-		<li class="nav-item"><a class="nav-link" href="kirimPesan.html">
-				<span>Pesan</span>
+			th:href="'/sipen/TambahPeminjaman/'"> <span>Buat
+					Peminjaman</span>
 		</a></li>
 		<li class="nav-item"><a class="nav-link"
-			href="formProfilPengguna.html"> <span>Profil Peminjam</span></a></li>
+			th:href="'/sipen/LihatBarang/'"> <span>Lihat Barang
+					Tersedia</span>
+		</a></li>
+		<li class="nav-item"><a class="nav-link" href=""> <span>Pesan</span>
+		</a></li>
+		<li class="nav-item"><a class="nav-link"
+			th:href="'/sipen/EditProfil/'"> <span>Profil
+					Peminjam</span></a></li>
 	</ul>
 	<!--end Sidebar -->
 	<!-- Modal Logout -->
-	<div th:fragment="modalLogout" class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div th:fragment="modalLogout" class="modal fade" id="logoutModal"
+		tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">

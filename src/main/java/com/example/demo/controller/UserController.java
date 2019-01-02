@@ -26,7 +26,7 @@ public class UserController {
 	@Autowired
 	BarangServiceDatabase barangService;
 
-	@RequestMapping("/sipen/editProfil/{id}")
+	@RequestMapping("/sipen/EditProfil/{id}")
 	public String editProfilPeminjam(Model model, @PathVariable(value = "id") String id) {
 		UserModel user = peminjamService.selectUserById(id);
 		System.out.println("user "+user);
