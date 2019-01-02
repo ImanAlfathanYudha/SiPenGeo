@@ -37,7 +37,6 @@
 								<thead>
 									<tr>
 										<th>No.</th>
-										<th>Peminjaman</th>
 										<th>Tujuan Peminjaman</th>
 										<th>Tempat Peminjaman</th>
 										<th>Tanggal Peminjaman</th>
@@ -50,7 +49,6 @@
 								<div th:each="listPeminjaman,iterationStatus: ${listPeminjaman}">
 									<tr>
 										<td th:text="${iterationStatus.count}">1</td>
-										<td>Peminjaman barang x</td>
 										<td th:text=" ${listPeminjaman.tujuanPinjam}">Untuk
 											keperluan research</td>
 										<td th:text=" ${listPeminjaman.tempatPeminjaman}">Lab
@@ -59,9 +57,11 @@
 										<td th:text=" ${listPeminjaman.tanggalPengembalian}">2018/01/28</td>
 										<td th:text=" ${listPeminjaman.totalHargaJaminan}">2018/01/28</td>
 										<td><ul>
-												<li><a type="button" href="peminjaman.html"> <i>Lihat</i>
+												<li><a type="button"
+													th:href="'LihatPeminjaman/' + ${listPeminjaman.id}"> <i>Lihat</i>
 												</a></li>
-												<li><a type="button" href="#"> <i>Edit</i>
+												<li><a type="button"
+													th:href="'EditPeminjaman/' + ${listPeminjaman.id}"> <i>Edit</i>
 												</a></li>
 												<li><a type="button" href="#" data-toggle="modal"
 													data-target="#logoutDelete"> <i>Hapus</i>
@@ -120,8 +120,7 @@
 	<div th:replace="fragments/body::modalLogout"></div>
 	<!-- end Logout Modal-->
 	<!-- jscript -->
-	<div th:replace="fragments/head::jscript">
-	</div>
+	<div th:replace="fragments/head::jscript"></div>
 	<!-- end jscript -->
 </body>
 </html>
