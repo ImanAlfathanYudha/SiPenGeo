@@ -5,7 +5,7 @@
 	<!-- Header -->
 	<nav th:fragment="header"
 		class="navbar navbar-expand navbar-dark bg-dark static-top">
-		<a class="navbar-brand mr-1" href="index.html">Sistem Peminjaman</a>
+		<a class="navbar-brand mr-1" th:href="'/sipen'">Sistem Peminjaman</a>
 		<button class="btn btn-link btn-sm text-white order-1 order-sm-0"
 			id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>
@@ -28,7 +28,7 @@
 	<!-- Sidebar -->
 	<ul th:fragment="samping" class="sidebar navbar-nav">
 		<li class="nav-item dropdown"><a class="nav-link"
-			href="formPeminjaman.html" id=""> <span>Buat Peminjaman</span>
+			th:href="'/sipen/TambahPeminjaman/'"> <span>Buat Peminjaman</span>
 		</a></li>
 		<li class="nav-item"><a class="nav-link" href="tableBarang.html">
 				<span>Lihat Barang Tersedia</span>
