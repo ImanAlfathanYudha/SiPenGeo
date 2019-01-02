@@ -53,7 +53,7 @@ public class PeminjamServiceDatabase implements UserService {
 		System.out.println("list barang "+peminjam.listBarangDipinjam + peminjam.listBarangDipinjam.size());
 		log.info("get konfirmasi by id tol ",peminjam.listKonfirmasi);
 		System.out.println("get konfirmasi by id tol "+peminjam.listKonfirmasi+peminjam.listKonfirmasi.size());
-		//
+		//gak usah ngegas lu tod, sel kok ngegas
 		return peminjam;
 	}
 	

@@ -75,6 +75,7 @@
 										<th>Tahun</th>
 										<th>Harga Jaminan</th>
 										<th>Kuantitas</th>
+										<th>Action</th>
 									</tr>
 								</thead>
 								<div th:each="listBarang,iterationStatus: ${listBarang}">
@@ -85,6 +86,10 @@
 										<td th:text=" ${listBarang.tahun}">2015</td>
 										<td th:text=" ${listBarang.hargaJamin}">Rp10.000,-</td>
 										<td th:text=" ${listBarang.kuantitas}">Sedang Peminjaman</td>
+										<td><a type="button"
+													th:href="'/sipen/EditBarang/' + ${listBarang.id}">
+														<i>Edit</i>
+												</a></td>
 									</tr>
 								</div>
 							</table>
