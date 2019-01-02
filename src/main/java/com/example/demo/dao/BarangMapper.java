@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -36,4 +37,8 @@ public interface BarangMapper {
 			@Result (property = "barangAsal", column = "id_barang",javaType = BarangModel.class,many = @Many(select="getBarangById"))
 	})
 	List<BarangDipinjamModel> getAllBarangDipinjam(@Param("id") String id);
+	
+	@Insert("INSERT INTO barang (nama_barang, tipe, tahun, harga_jamin, kuantitas, is_delete) "
+			+ "VALUES (#{namaBarang}, #{tipe}, #{tahun}, #{hargaJamin}, #{kuantitas}, 0)")	
+	void addBarang(BarangModel barangModel);
 }

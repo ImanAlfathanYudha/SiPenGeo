@@ -31,4 +31,11 @@ public class BarangServiceDatabase implements BarangService{
 		return barang;
 	}
 
+	@Override
+	public void addBarang(BarangModel barang) {
+		// TODO Auto-generated method stub
+		log.info("tambah ruangan"+barang);
+		barangMapper.addBarang(barang);
+	}
+
 }

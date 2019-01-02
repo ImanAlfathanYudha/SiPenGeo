@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.demo.model.UserModel;
 import com.example.demo.model.BarangDipinjamModel;
@@ -58,7 +60,16 @@ public class PageController {
 	
 	@RequestMapping("/sipen/TambahBarang")
 	public String tambahBarang(Model model){
+		BarangModel barangModel = new BarangModel();
+		model.addAttribute("barangModel", barangModel);
 		return "formTambahBarang";
+	}
+	
+	@PostMapping("/sipen/TambahBarang/submit")
+	public String tambahBarangSubmit(Model model, @ModelAttribute BarangModel barangModel){		
+		System.out.println("barang "+barangModel);
+		barangService.addBarang(barangModel);
+		return "redirect:/sipen/LihatBarang";
 	}
 	
 	@RequestMapping("/sipen/EditBarang/{id}")

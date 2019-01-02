@@ -32,13 +32,14 @@
 					</div>
 					<!--Form data pribadi-->
 					<div class="card-body">
-						<form>
+						<form th:action="@{/sipen/TambahBarang/submit}"
+							th:object="${barangModel}" method="post">
 							<div class="form-group">
 								<div class="col-md-6">
 									<div class="form-label-group">
 										<input type="text" id="inputNamaBarang" class="form-control"
 											placeholder="Nama Barang" required="required"
-											autofocus="autofocus"></input> <label for="inputNamaBarang">Nama
+											autofocus="autofocus" th:field="*{namaBarang}"></input> <label for="inputNamaBarang">Nama
 											Barang</label>
 									</div>
 								</div>
@@ -47,7 +48,7 @@
 								<div class="col-md-6">
 									<div class="form-label-group">
 										<input type="text" id="inputTipe" class="form-control"
-											placeholder="Tipe" required="required"></input><label
+											placeholder="Tipe" required="required" th:field="*{tipe}"></input><label
 											for="inputTipe">Tipe</label>
 									</div>
 								</div>
@@ -56,7 +57,7 @@
 								<div class="col-md-6">
 									<div class="form-label-group">
 										<input type="number" id="inputTahun" class="form-control"
-											placeholder="Tahun" required="required"></input> <label
+											placeholder="Tahun" required="required" th:field="*{tahun}"></input> <label
 											for="inputTahun">Tahun</label>
 									</div>
 								</div>
@@ -65,7 +66,7 @@
 								<div class="col-md-6">
 									<div class="form-label-group">
 										<input type="number" id="inputHargaJamin" class="form-control"
-											placeholder="Harga Jamin" required="required"></input><label
+											placeholder="Harga Jamin" required="required" th:field="*{hargaJamin}"></input><label
 											for="inputHargaJamin">Harga Jaminan</label>
 									</div>
 								</div>
@@ -75,7 +76,7 @@
 									<div class="form-label-group">
 										<input type="number" id="inputKuantitasTersedia"
 											class="form-control" placeholder="Kuantitas Tersedia"
-											required="required"></input><label
+											required="required" th:field="*{kuantitas}"></input><label
 											for="inputKuantitasTersedia">Kuantitas Tersedia</label>
 									</div>
 								</div>
@@ -83,8 +84,8 @@
 							<div class="row">
 								<div class="col-sm-4"></div>
 								<div class="col-sm-4">
-									<a class="btn btn-primary btn-block" href="">Tambahkan
-										Barang</a>
+									<button class="btn btn-primary btn-block" type="submit"
+										name="action" value="save">Tambahkan Barang</button>
 								</div>
 							</div>
 						</form>

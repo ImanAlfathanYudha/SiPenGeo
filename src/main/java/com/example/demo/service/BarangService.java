@@ -9,4 +9,6 @@ public interface BarangService {
 	List<BarangModel> getAllBarangTersedia();
 	
 	BarangModel getBarangById(String id);
+	
+	void addBarang(BarangModel barang);
 }
