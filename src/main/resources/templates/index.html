@@ -59,7 +59,7 @@
 										<td th:text=" ${listPeminjaman.tanggalPengembalian}">2018/01/28</td>
 										<td th:text=" ${listPeminjaman.totalHargaJaminan}">2018/01/28</td>
 										<td><ul>
-												<li><a type="button" href="peminjaman.html"> <i>Lihat</i>
+												<li><a type="button" th:href="'sipen/LihatPeminjamanAdm/'+${listPeminjaman.id}"> <i>Lihat</i>
 												</a></li>
 												<li><a type="button" href="#"> <i>Edit</i>
 												</a></li>
