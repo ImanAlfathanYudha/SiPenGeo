@@ -90,6 +90,9 @@
 									</div>
 								</div>
 							</div>
+							<div th:if="${sukses!=null}" class="alert alert-success">
+								<span th:text="${sukses}"></span>
+							</div>
 							<div class="row">
 								<div class="col-sm-4"></div>
 								<!--<div class="col-sm-4">
@@ -97,15 +100,9 @@
 										th:href="'/sipen/EditPeminjaman/'+ *{id}"">Ubah Barang</a>
 								</div>-->
 								<div class="col-sm-4">
-<<<<<<< HEAD
-									<a class="btn btn-primary btn-block" href="index.html">Ubah
-										Barang</a>
-=======
 									<button class="btn btn-primary btn-block" type="submit"
 										name="action" value="save">Ubah Barang</button>
->>>>>>> 7d7a3469117ff0275c9a65d6e587157894f8cc1b
 								</div>
-
 							</div>
 						</form>
 					</div>
