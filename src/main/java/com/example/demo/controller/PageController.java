@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,27 +24,29 @@ public class PageController {
 
 	@Autowired
 	BarangServiceDatabase barangService;
-	
+
 	@RequestMapping("/login")
 	public String login(Model model) {
-		//erModel usermodel = peminjamService.selectUserByUsername(principal.getName());
-//		if (principal != null) {
-//			System.out.println("principal tidak null "+principal);
-//			return "redirect:/";
-//		}
-//		System.out.println("principal apa isinya, ler "+principal);
+		// erModel usermodel =
+		// peminjamService.selectUserByUsername(principal.getName());
+		// if (principal != null) {
+		// System.out.println("principal tidak null "+principal);
+		// return "redirect:/";
+		// }
+		// System.out.println("principal apa isinya, ler "+principal);
 		return "login";
 	}
 
 	@RequestMapping("/sipen")
 	public String index(Model model) {
-		//UserModel usermodel = peminjamService.selectUserByUsername(principal.getName());
-//		if(usermodel == null) {
-//    		return "redirect:/logout";
-//    	}
+		// UserModel usermodel =
+		// peminjamService.selectUserByUsername(principal.getName());
+		// if(usermodel == null) {
+		// return "redirect:/logout";
+		// }
 		List<PeminjamanModel> listPeminjaman = peminjamService.getAllPeminjaman();
 		System.out.println("listPeminjaman ada" + listPeminjaman);
-	//	model.addAttribute("usermodel", usermodel);
+		// model.addAttribute("usermodel", usermodel);
 		model.addAttribute("listPeminjaman", listPeminjaman);
 		return "index";
 	}
@@ -53,33 +54,40 @@ public class PageController {
 	@RequestMapping("/sipen/adm")
 	public String indexNonPeminjam(Model model) {
 		List<PeminjamanModel> listPeminjaman = peminjamService.getAllPeminjaman();
-		System.out.println("tes tes "+listPeminjaman);
-		model.addAttribute("listPeminjaman", listPeminjaman);		
+		System.out.println("tes tes " + listPeminjaman);
+		model.addAttribute("listPeminjaman", listPeminjaman);
 		return "index2";
 	}
-	
+
 	@RequestMapping("/sipen/TambahBarang")
-	public String tambahBarang(Model model){
+	public String tambahBarang(Model model) {
 		BarangModel barangModel = new BarangModel();
 		model.addAttribute("barangModel", barangModel);
 		return "formTambahBarang";
 	}
-	
+
 	@PostMapping("/sipen/TambahBarang/submit")
-	public String tambahBarangSubmit(Model model, @ModelAttribute BarangModel barangModel){		
-		System.out.println("barang "+barangModel);
+	public String tambahBarangSubmit(Model model, @ModelAttribute BarangModel barangModel) {
+		System.out.println("barang " + barangModel);
 		barangService.addBarang(barangModel);
 		return "redirect:/sipen/LihatBarang";
 	}
-	
+
 	@RequestMapping("/sipen/EditBarang/{id}")
 	public String editBarang(Model model, @PathVariable(value = "id") String id) {
 		BarangModel barang = barangService.getBarangById(id);
-		System.out.println("tes tes barnag"+barang);
+		System.out.println("tes tes barnag" + barang);
 		model.addAttribute("barang", barang);
 		return "formEditBarang";
 	}
-	
+
+	@PostMapping("/sipen/EditBarang/submit")
+	public String editBarangSubmit(Model model, @ModelAttribute BarangModel barangModel) {
+		System.out.println("barang " + barangModel);
+		barangService.editBarang(barangModel);
+		return "redirect:/sipen/EditBarang/" + barangModel.id;
+	}
+
 	@RequestMapping("/sipen/LihatPeminjamanAdm/{id}")
 	public String getPeminjamanbyIDAdm(Model model, @PathVariable(value = "id") String id) {
 		PeminjamanModel peminjaman = peminjamService.getPeminjamanbyID(id);
@@ -96,5 +104,5 @@ public class PageController {
 			return "redirect:/sipen";
 		}
 	}
-	
+
 }
