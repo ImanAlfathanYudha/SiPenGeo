@@ -32,7 +32,16 @@
 					</div>
 					<!--Form data pribadi-->
 					<div class="card-body">
-						<form th:object="${barang}" method="post">
+						<form th:object="${barang}"
+							th:action="@{/sipen/EditBarang/submit}" method="post">
+							<div class="form-group">
+								<div class="col-md-6">
+									<div class="form-label-group">
+										<input id="id" type="hidden" class="form-control"
+											placeholder="id" th:field="*{id}"></input>
+									</div>
+								</div>
+							</div>
 							<div class="form-group">
 								<div class="col-md-6">
 									<div class="form-label-group">
@@ -83,13 +92,15 @@
 							</div>
 							<div class="row">
 								<div class="col-sm-4"></div>
+								<!--<div class="col-sm-4">
+									<a class="btn btn-primary btn-block"
+										th:href="'/sipen/EditPeminjaman/'+ *{id}"">Ubah Barang</a>
+								</div>-->
 								<div class="col-sm-4">
-<<<<<<< HEAD
-									<a class="btn btn-primary btn-block" href="index.html">Ubah Barang</a>
-=======
-									<a class="btn btn-primary btn-block" href="index.html">Simpan</a>
->>>>>>> bdfc06b04a0f80351cb1086a0c09a249558e257b
+									<button class="btn btn-primary btn-block" type="submit"
+										name="action" value="save">Ubah Barang</button>
 								</div>
+
 							</div>
 						</form>
 					</div>
