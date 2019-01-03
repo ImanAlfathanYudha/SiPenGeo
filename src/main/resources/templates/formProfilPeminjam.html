@@ -32,13 +32,13 @@
 					</div>
 					<!--Form data pribadi-->
 					<div class="card-body">
-						<form th:object="${user}" th:action="@{/sipen/editProfil/submit}"
+						<form th:object="${user}" th:action="@{/sipen/EditProfil/submit}"
 							method="post">
 							<div class="form-group">
 								<div class="col-md-6">
 									<div class="form-label-group">
-										<input id="id" class="form-control" placeholder="id"
-											th:field="*{id}"></input>
+										<input id="id" type="hidden" class="form-control"
+											placeholder="id" th:field="*{id}"></input>
 									</div>
 								</div>
 							</div>
@@ -89,11 +89,20 @@
 									</div>
 								</div>
 							</div>
+							<!-- <div class="col-sm-4">
+								<div class="btn btn-primary btn-block">
+									<p onclick="this.parentElement.style.display='none';"
+										th:text="${sukses}"></p>
+								</div>
+							</div> -->
+							<div th:if = "${sukses!=null}" class="alert alert-success">
+							<span th:text="${sukses}"></span>								
+							</div>
 							<div class="row">
 								<div class="col-sm-4"></div>
 								<div class="col-sm-4">
-									<a class="btn btn-primary btn-block" href="">
-										Ubah Profil</a>
+									<button class="btn btn-primary btn-block" type="submit"
+										name="action" value="save">Ubah Profil</button>
 								</div>
 							</div>
 						</form>

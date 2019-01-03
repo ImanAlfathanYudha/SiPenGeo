@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.model.BarangDipinjamModel;
 import com.example.demo.model.BarangModel;
@@ -34,11 +35,12 @@ public class UserController {
 		return "formProfilPeminjam";
 	}
 
-	@PostMapping("/sipen/editProfil/submit")
-	public String updatePeminjamSubmit(Model model, @ModelAttribute UserModel peminjam){
+	@PostMapping("/sipen/EditProfil/submit")
+	public String updatePeminjamSubmit(Model model, RedirectAttributes redirectAttributes, @ModelAttribute UserModel peminjam){
 	System.out.println(peminjam);
 	peminjamService.updateProfilPeminjam(peminjam);
-	return "redirect:/sipen";
+	redirectAttributes.addFlashAttribute("sukses","Data berhasil dirubah");
+	return "redirect:/sipen/EditProfil/"+peminjam.id;
 	}
 	
 	@RequestMapping("/sipen/LihatBarang")
