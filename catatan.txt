@@ -1,0 +1,36 @@
+*
+- dosen praktikum (menyetujui selama barang-barangnya ada)
+- ketua lab/kadept (menyetujui selama barang-barangnya ada)
+- laboran (menyetujui selama barang-barangnya ada secara real time)
+
+pengesahan peminjaman praktikum di geografi:
+- dosen praktikum (menyetujui selama barang-barangnya ada)
+- ketua lab/kadept (menyetujui selama barang-barangnya ada)
+- laboran (menyetujui selama barang-barangnya ada secara real time)
+
+pengesahan peminjaman fakultas luar:
+- kadept
+- dosen praktikum dr fakultas tsb
+- laboran
+
+pengesahan peminjaman oleh dosen:
+- kadept
+- laboran
+
+pengesahan peminjaman oleh kadept:
+-laboran
+
+#laboran/petugas lab bisa menyetujui asalkan dosen yang terlibat/kadept ikut menyetujui.
+#Penyetuju ada 3 orang.
+#tambahan status di peminjaman "selesai peminjaman"
+
+Konfirmasi peminjaman:
+- Dilaporkan
+- Diterima
+- Ditolak
+- Butuh permohonan pengantar
+- Barang diserahkan
+- Peminjaman Selesai
+
+perubahan tabel barang:
+- harga jaminan hanya untuk barang-barang tertentu. brarti ada barang yg harganya 0.
