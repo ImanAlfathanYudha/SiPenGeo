@@ -30,6 +30,19 @@ public interface UserMapper {
 			@Result(property = "userPeminjam", column = "id_peminjam", javaType = UserModel.class, many = @Many(select = "selectUserById")),
 			@Result(property = "listKonfirmasi", column = "id_peminjaman", javaType = List.class, many = @Many(select = "KonfirmasiPeminjamanMapper.getAllKonfirmasi")) })
 	List<PeminjamanModel> getAllPeminjaman();
+	
+	@Select("SELECT * FROM peminjaman "
+			+ "ORDER BY ID DESC LIMIT 1")
+	PeminjamanModel peminjamanTerakhir();
+	
+	@Insert("INSERT INTO peminjaman (`id_peminjam`, `tujuan_pinjam`, `deskripsi`, `tempat_peminjaman`, `tanggal_pinjam`, `tanggal_pengembalian`, `tanggal_pengembalian_barang`,  `tanggal_perubahan` ) "
+			+ "VALUES ('1', #{tujuanPinjam}, #{deskripsi}, #{tempatPeminjaman}, #{tanggalPinjam}, #{tanggalPengembalian}, #{tanggalPengembalian}, #{tanggalPinjam})")
+	void addPeminjaman(PeminjamanModel peminjamanModel);
+	
+	@Update("UPDATE peminjaman "
+			+ "SET tanggal_perubahan = #{tanggalPerubahan} "
+			+ "WHERE id = #{id} ")
+	void updateTanggalPerubahan(PeminjamanModel peminjaman);
 
 	@Select("select * from user where username = #{username}")
 	@Results(value = {
@@ -75,8 +88,4 @@ public interface UserMapper {
 	@Update("UPDATE user " + "SET nama=#{nama}, instansi=#{instansi}, telepon=#{telepon}, alamat=#{alamat} "
 			+ "WHERE id = #{id}")
 	void updateProfilPeminjam(UserModel user);
-
-	@Insert("INSERT INTO peminjaman (`id_peminjam`, `tujuan_pinjam`, `deskripsi`, `tempat_peminjaman`, `tanggal_pinjam`, `tanggal_pengembalian`, `tanggal_pengembalian_barang`,  `tanggal_perubahan` ) "
-			+ "VALUES ('1', #{tujuanPinjam}, #{deskripsi}, #{tempatPeminjaman}, #{tanggalPinjam}, #{tanggalPengembalian}, #{tanggalPengembalian}, #{tanggalPinjam})")
-	void addPeminjaman(PeminjamanModel peminjamanModel);
 }

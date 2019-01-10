@@ -84,6 +84,9 @@ public class PeminjamServiceDatabase implements UserService {
 		// TODO Auto-generated method stub
 		log.info("tambah peminjaman" + peminjamanModel);
 		userMapper.addPeminjaman(peminjamanModel);
+		PeminjamanModel peminjamanTerakhir = userMapper.peminjamanTerakhir();
+		peminjamanTerakhir.setTanggalPerubahan(java.time.LocalDate.now().toString());
+		userMapper.updateTanggalPerubahan(peminjamanTerakhir);
 	}
 	
 }
