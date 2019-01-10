@@ -24,25 +24,28 @@ public class UserController {
 
 	@Autowired
 	PeminjamServiceDatabase peminjamService;
+	// @Autowired
+	// PeminjamanServiceDatabase peminjamanService;
 	@Autowired
 	BarangServiceDatabase barangService;
 
 	@RequestMapping("/sipen/EditProfil/{id}")
 	public String editProfilPeminjam(Model model, @PathVariable(value = "id") String id) {
 		UserModel user = peminjamService.selectUserById(id);
-		System.out.println("user "+user);
+		System.out.println("user " + user);
 		model.addAttribute("user", user);
 		return "formProfilPeminjam";
 	}
 
 	@PostMapping("/sipen/EditProfil/submit")
-	public String updatePeminjamSubmit(Model model, RedirectAttributes redirectAttributes, @ModelAttribute UserModel peminjam){
-	System.out.println(peminjam);
-	peminjamService.updateProfilPeminjam(peminjam);
-	redirectAttributes.addFlashAttribute("sukses","Data berhasil dirubah");
-	return "redirect:/sipen/EditProfil/"+peminjam.id;
+	public String updatePeminjamSubmit(Model model, RedirectAttributes redirectAttributes,
+			@ModelAttribute UserModel peminjam) {
+		System.out.println(peminjam);
+		peminjamService.updateProfilPeminjam(peminjam);
+		redirectAttributes.addFlashAttribute("sukses", "Data berhasil dirubah");
+		return "redirect:/sipen/EditProfil/" + peminjam.id;
 	}
-	
+
 	@RequestMapping("/sipen/LihatBarang")
 	public String lihatListBarang(Model model) {
 		List<BarangModel> listBarang = barangService.getAllBarangTersedia();
@@ -75,22 +78,32 @@ public class UserController {
 	}
 
 	@RequestMapping("/sipen/TambahPeminjaman")
-	public String buatPeminjaman(Model model){		
+	public String buatPeminjaman(Model model) {
 		return "formBuatPeminjaman";
 	}
-	
+
 	@RequestMapping("/sipen/EditPeminjaman/{id}")
-	public String editPeminjaman(Model model, @PathVariable(value = "id") String id){
+	public String editPeminjaman(Model model, @PathVariable(value = "id") String id) {
 		PeminjamanModel peminjaman = peminjamService.getPeminjamanbyID(id);
-		model.addAttribute("peminjaman",peminjaman);
+		model.addAttribute("peminjaman", peminjaman);
 		return "formEditPeminjaman";
 	}
-	
+
+	@PostMapping("/sipen/EditPeminjaman/submit")
+	public String editPeminjamanSubmit(Model model, RedirectAttributes redirectAttributes,
+			@ModelAttribute PeminjamanModel peminjamanModel) {
+		System.out.println("bibip bibip bibip ...  Peminjaman akan diedut");
+		System.out.println("peminjaman " + peminjamanModel);
+		peminjamService.editPeminjaman(peminjamanModel);
+		redirectAttributes.addFlashAttribute("sukses", "Data berhasil dirubah");
+		return "redirect:/sipen/EditPeminjaman/" + peminjamanModel.id;
+	}
+
 	@RequestMapping("/sipen/TambahkankePinjaman/{id}")
-	public String tambahBarang(Model model, @PathVariable(value = "id") String id){
+	public String tambahBarang(Model model, @PathVariable(value = "id") String id) {
 		PeminjamanModel peminjaman = peminjamService.getPeminjamanbyID(id);
 		List<BarangModel> barang = barangService.getAllBarangTersedia();
 		model.addAttribute("barang", barang);
-		return"formTambahBarangkePeminjaman";
+		return "formTambahBarangkePeminjaman";
 	}
 }
