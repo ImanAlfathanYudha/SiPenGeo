@@ -59,10 +59,11 @@ public interface UserMapper {
 	// })
 	// List<KonfirmasiPeminjamanModel> getAllKonfirmasi(@Param("id") String id);
 
-	@Select("SELECT id, id_peminjam, tujuan_pinjam, tempat_peminjaman,tanggal_pinjam, tanggal_pengembalian, total_harga_jaminan, tanggal_perubahan "
+	@Select("SELECT id, id_peminjam, tujuan_pinjam, deskripsi, tempat_peminjaman,tanggal_pinjam, tanggal_pengembalian, total_harga_jaminan, tanggal_perubahan "
 			+ "FROM peminjaman " + "where id=#{id} order by tanggal_perubahan")
 	@Results(value = { @Result(property = "idPeminjam", column = "id_peminjam"),
 			@Result(property = "tujuanPinjam", column = "tujuan_pinjam"),
+			@Result(property = "deskripsi", column = "deskripsi"),
 			@Result(property = "tempatPeminjaman", column = "tempat_peminjaman"),
 			@Result(property = "tanggalPinjam", column = "tanggal_pinjam"),
 			@Result(property = "tanggalPengembalian", column = "tanggal_pengembalian"),
