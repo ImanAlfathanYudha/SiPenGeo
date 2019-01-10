@@ -50,17 +50,7 @@ public interface PeminjamanMapper {
 	// void addPeminjaman(PeminjamanModel peminjamanModel);
 	// biar yuda yg bikin ini
 	
-	@Select("SELECT *" + "FROM peminjaman " + "order by tanggal_perubahan")
-	@Results(value = { @Result(property = "idPeminjam", column = "id_peminjam"),
-			@Result(property = "tujuanPinjam", column = "tujuan_pinjam"),
-			@Result(property = "tempatPeminjaman", column = "tempat_peminjaman"),
-			@Result(property = "tanggalPinjam", column = "tanggal_pinjam"),
-			@Result(property = "tanggalPengembalian", column = "tanggal_pengembalian"),
-			@Result(property = "totalHargaJaminan", column = "total_harga_jaminan"),
-			@Result(property = "tanggalPerubahan", column = "tanggal_perubahan"),
-			@Result(property = "userPeminjam", column = "id_peminjam", javaType = UserModel.class, many = @Many(select = "selectUserById")),
-			@Result(property = "listKonfirmasi", column = "id_peminjaman", javaType = List.class, many = @Many(select = "KonfirmasiPeminjamanMapper.getAllKonfirmasi")) })
-	List<PeminjamanModel> getAllPeminjaman();
+	
 	
 	@Select("SELECT * FROM peminjaman "
 			+ "ORDER BY ID DESC LIMIT 1")

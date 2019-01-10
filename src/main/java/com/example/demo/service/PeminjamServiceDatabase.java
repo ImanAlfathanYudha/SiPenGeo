@@ -34,8 +34,8 @@ public class PeminjamServiceDatabase implements UserService {
 
 	@Override
 	public List<PeminjamanModel> getAllPeminjaman() {
-		log.info("getAllList", peminjamanMapper.getAllPeminjaman());
-		return peminjamanMapper.getAllPeminjaman();
+		log.info("getAllList", userMapper.getAllPeminjaman());
+		return userMapper.getAllPeminjaman();
 	}
 
 	@Override
