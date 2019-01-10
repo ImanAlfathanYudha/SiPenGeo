@@ -25,6 +25,7 @@ public class PeminjamServiceDatabase implements UserService {
 
 	@Autowired
 	private BarangMapper barangMapper;
+	
 	@Autowired
 	private PeminjamanMapper peminjamanMapper;
 
@@ -33,8 +34,8 @@ public class PeminjamServiceDatabase implements UserService {
 
 	@Override
 	public List<PeminjamanModel> getAllPeminjaman() {
-		log.info("getAllList", userMapper.getAllPeminjaman());
-		return userMapper.getAllPeminjaman();
+		log.info("getAllList", peminjamanMapper.getAllPeminjaman());
+		return peminjamanMapper.getAllPeminjaman();
 	}
 
 	@Override
@@ -95,9 +96,9 @@ public class PeminjamServiceDatabase implements UserService {
 	public void tambahPeminjaman(PeminjamanModel peminjamanModel) {
 		// TODO Auto-generated method stub
 		log.info("tambah peminjaman" + peminjamanModel);
-		userMapper.addPeminjaman(peminjamanModel);
-		PeminjamanModel peminjamanTerakhir = userMapper.peminjamanTerakhir();
+		peminjamanMapper.addPeminjaman(peminjamanModel);
+		PeminjamanModel peminjamanTerakhir = peminjamanMapper.peminjamanTerakhir();
 		peminjamanTerakhir.setTanggalPerubahan(java.time.LocalDate.now().toString());
-		userMapper.updateTanggalPerubahan(peminjamanTerakhir);
+		peminjamanMapper.updateTanggalPerubahan(peminjamanTerakhir);
 	}
 }

@@ -18,31 +18,7 @@ import com.example.demo.model.KonfirmasiPeminjamanModel;
 import com.example.demo.model.PeminjamanModel;
 
 @Mapper
-public interface UserMapper {
-	@Select("SELECT *" + "FROM peminjaman " + "order by tanggal_perubahan")
-	@Results(value = { @Result(property = "idPeminjam", column = "id_peminjam"),
-			@Result(property = "tujuanPinjam", column = "tujuan_pinjam"),
-			@Result(property = "tempatPeminjaman", column = "tempat_peminjaman"),
-			@Result(property = "tanggalPinjam", column = "tanggal_pinjam"),
-			@Result(property = "tanggalPengembalian", column = "tanggal_pengembalian"),
-			@Result(property = "totalHargaJaminan", column = "total_harga_jaminan"),
-			@Result(property = "tanggalPerubahan", column = "tanggal_perubahan"),
-			@Result(property = "userPeminjam", column = "id_peminjam", javaType = UserModel.class, many = @Many(select = "selectUserById")),
-			@Result(property = "listKonfirmasi", column = "id_peminjaman", javaType = List.class, many = @Many(select = "KonfirmasiPeminjamanMapper.getAllKonfirmasi")) })
-	List<PeminjamanModel> getAllPeminjaman();
-	
-	@Select("SELECT * FROM peminjaman "
-			+ "ORDER BY ID DESC LIMIT 1")
-	PeminjamanModel peminjamanTerakhir();
-	
-	@Insert("INSERT INTO peminjaman (`id_peminjam`, `tujuan_pinjam`, `deskripsi`, `tempat_peminjaman`, `tanggal_pinjam`, `tanggal_pengembalian`, `tanggal_pengembalian_barang`,  `tanggal_perubahan` ) "
-			+ "VALUES ('1', #{tujuanPinjam}, #{deskripsi}, #{tempatPeminjaman}, #{tanggalPinjam}, #{tanggalPengembalian}, #{tanggalPengembalian}, #{tanggalPinjam})")
-	void addPeminjaman(PeminjamanModel peminjamanModel);
-	
-	@Update("UPDATE peminjaman "
-			+ "SET tanggal_perubahan = #{tanggalPerubahan} "
-			+ "WHERE id = #{id} ")
-	void updateTanggalPerubahan(PeminjamanModel peminjaman);
+public interface UserMapper {	
 
 	@Select("select * from user where username = #{username}")
 	@Results(value = {
