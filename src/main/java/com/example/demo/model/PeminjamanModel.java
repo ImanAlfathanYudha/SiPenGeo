@@ -20,6 +20,7 @@ public class PeminjamanModel {
 	public String tanggalPengembalian;
 	public Integer totalHargaJaminan;
 	public String tanggalPerubahan;
+	public Integer isDelete;
 	public UserModel userPeminjam;
 	public List<BarangDipinjamModel> listBarangDipinjam;
 	public List<KonfirmasiPeminjamanModel> listKonfirmasi;
