@@ -14,11 +14,12 @@ public class PeminjamanModel {
 	public Integer id;
 	public String idPeminjam;
 	public String tujuanPinjam;
+	public String deskripsi;
 	public String tempatPeminjaman;
 	public String tanggalPinjam;
 	public String tanggalPengembalian;
 	public Integer totalHargaJaminan;
-	public Date tanggalPerubahan;
+	public String tanggalPerubahan;
 	public UserModel userPeminjam;
 	public List<BarangDipinjamModel> listBarangDipinjam;
 	public List<KonfirmasiPeminjamanModel> listKonfirmasi;

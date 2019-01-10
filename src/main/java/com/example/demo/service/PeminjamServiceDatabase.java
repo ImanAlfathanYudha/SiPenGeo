@@ -78,5 +78,12 @@ public class PeminjamServiceDatabase implements UserService {
 		System.out.println("user by id "+user);
 		return user;
 	}
+
+	@Override
+	public void tambahPeminjaman(PeminjamanModel peminjamanModel) {
+		// TODO Auto-generated method stub
+		log.info("tambah peminjaman" + peminjamanModel);
+		userMapper.addPeminjaman(peminjamanModel);
+	}
 	
 }
