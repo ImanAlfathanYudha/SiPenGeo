@@ -91,7 +91,7 @@ public class PageController {
 		return "redirect:/sipen/EditBarang/" + barangModel.id;
 	}
 
-	@RequestMapping("/sipen/LihatPeminjamanAdm/{id}")
+	@RequestMapping("/sipen/KonfirmasiPeminjaman/{id}")
 	public String getPeminjamanbyIDAdm(Model model, @PathVariable(value = "id") String id) {
 		PeminjamanModel peminjaman = peminjamService.getPeminjamanbyID(id);
 		if (peminjaman != null) {

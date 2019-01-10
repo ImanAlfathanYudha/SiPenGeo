@@ -78,8 +78,17 @@ public class UserController {
 	}
 
 	@RequestMapping("/sipen/TambahPeminjaman")
-	public String buatPeminjaman(Model model) {
-		return "formBuatPeminjaman";
+	public String buatPeminjaman(Model model){
+		PeminjamanModel peminjamanModel = new PeminjamanModel();
+		model.addAttribute("peminjamanModel", peminjamanModel);
+		return "formTambahPeminjaman";
+	}
+	
+	@PostMapping("/sipen/TambahPeminjaman/submit")
+	public String buatPeminjamanSubmit(Model model,  @ModelAttribute PeminjamanModel peminjamanModel){
+		System.out.println("barang "+peminjamanModel);
+		peminjamService.tambahPeminjaman(peminjamanModel);
+		return "redirect:/sipen";
 	}
 
 	@RequestMapping("/sipen/EditPeminjaman/{id}")

@@ -19,4 +19,6 @@ public interface UserService {
 	
 	List<KonfirmasiPeminjamanModel> getAllKonfirmasi(String id);
 	
+	void tambahPeminjaman(PeminjamanModel peminjaman);
+	
 }

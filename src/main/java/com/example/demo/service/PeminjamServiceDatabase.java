@@ -91,4 +91,10 @@ public class PeminjamServiceDatabase implements UserService {
 		peminjamanMapper.editPeminjaman(peminjaman);
 	}
 
+	@Override
+	public void tambahPeminjaman(PeminjamanModel peminjamanModel) {
+		// TODO Auto-generated method stub
+		log.info("tambah peminjaman" + peminjamanModel);
+		userMapper.addPeminjaman(peminjamanModel);
+	}
 }
