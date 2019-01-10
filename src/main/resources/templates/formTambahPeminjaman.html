@@ -93,15 +93,14 @@
 					</div>
 					<!--Form data peminjaman-->
 					<div class="card-body">
-						<form th:action="@{/sipen/TambahPeminjaman/submit}"
-							th:object="${peminjamanModel}" method="post">
+						<form>
 							<div class="form-group">
 								<div class="col-md-6">
 									<div class="form-label-group">
 										<p>Tujuan peminjaman</p>
 									</div>
 									<!--Checkbox-->
-									<select name="tujuanPinjam" th:field="*{tujuanPinjam}">
+									<select name="tujuanPinjam">
 										<option th:value="''">--Pilih Tujuan Peminjaman</option>
 										<option th:value="'Kuliah Lapang'">Kuliah Lapang</option>
 										<option th:value="'Praktikum'">Praktikum</option>
@@ -116,19 +115,8 @@
 								<div class="col-md-6">
 									<div class="form-label-group">
 										<input type="text" id="inputTempat" class="form-control"
-											placeholder="Tempat Penggunaan" required="required"
-											th:field="*{tempatPeminjaman}"></input> <label
-											for="inputTempat">Tempat Penggunaan</label>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-md-6">
-									<div class="form-label-group">
-										<input type="text" id="inputDeskripsi" class="form-control"
-											placeholder="Deskripsi Peminjaman" required="required"
-											th:field="*{deskripsi}"></input> <label
-											for="inputDeskripsi">Deskripsi Peminjaman</label>
+											placeholder="Tempat Penggunaan" required="required"></input>
+										<label for="inputTempat">Tempat Penggunaan</label>
 									</div>
 								</div>
 							</div>
@@ -136,9 +124,8 @@
 								<div class="col-md-6">
 									<div class="form-label-group">
 										<input type="date" id="inputTanggalAwal" class="form-control"
-											placeholder="Tanggal Peminjaman" required="required"
-											th:field="*{tanggalPinjam}"></input> <label
-											for="inputTanggalAwal">Tanggal Peminjaman</label>
+											placeholder="Tanggal Peminjaman" required="required"></input>
+										<label for="inputTanggalAwal">Tanggal Peminjaman</label>
 									</div>
 								</div>
 							</div>
@@ -147,16 +134,16 @@
 									<div class="form-label-group">
 										<input type="date" id="inputTanggalAkhir" pattern="[0-9]"
 											class="form-control" placeholder="Tanggal Pengembalian"
-											required="required" th:field="*{tanggalPengembalian}"></input>
-										<label for="inputTanggalAkhir">Tanggal Pengembalian</label>
+											required="required"></input> <label for="inputTanggalAkhir">Tanggal
+											Pengembalian</label>
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-4"></div>
 								<div class="col-sm-4">
-									<button class="btn btn-primary btn-block" type="submit"
-										name="action" value="save">Tambahkan Peminjaman</button>
+									<a class="btn btn-primary btn-block" th:href="'/sipen'">Buat
+										Peminjaman</a>
 								</div>
 							</div>
 						</form>
@@ -171,7 +158,7 @@
 			<!--<footer class="sticky-footer">
                <div class="container my-auto">
                  <div class="copyright text-center my-auto">
-                   <span>Copyright © Your Website 2018</span>
+                   <span>Copyright Â© Your Website 2018</span>
                  </div>
                </div>
                </footer>-->
