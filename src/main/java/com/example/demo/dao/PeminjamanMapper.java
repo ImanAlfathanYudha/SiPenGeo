@@ -49,6 +49,7 @@ public interface PeminjamanMapper {
 	// #{kuantitas}, 0)")
 	// void addPeminjaman(PeminjamanModel peminjamanModel);
 	// biar yuda yg bikin ini
+<<<<<<< HEAD
 	
 		
 	@Select("SELECT * FROM peminjaman "
@@ -64,7 +65,26 @@ public interface PeminjamanMapper {
 			+ "WHERE id = #{id} ")
 	void updateTanggalPerubahan(PeminjamanModel peminjaman);	
 	
+=======
+
+	@Select("SELECT * FROM peminjaman " + "ORDER BY ID DESC LIMIT 1")
+	PeminjamanModel peminjamanTerakhir();
+
+	@Insert("INSERT INTO peminjaman (`id_peminjam`, `tujuan_pinjam`, `deskripsi`, `tempat_peminjaman`, `tanggal_pinjam`, `tanggal_pengembalian`, `tanggal_pengembalian_barang`, `tanggal_perubahan`, `total_harga_jaminan`, `is_delete`) "
+			+ "VALUES ('1', #{tujuanPinjam}, #{deskripsi}, #{tempatPeminjaman}, #{tanggalPinjam}, #{tanggalPengembalian}, #{tanggalPengembalian}, #{tanggalPinjam}, '0', '0')")
+	void addPeminjaman(PeminjamanModel peminjamanModel);
+
+	@Update("UPDATE peminjaman " + "SET tanggal_perubahan = #{tanggalPerubahan} " + "WHERE id = #{id} ")
+	void updateTanggalPerubahan(PeminjamanModel peminjaman);
+
+>>>>>>> a241b4d5c065e074be37a2593d2d66d7b84c4ffc
 	@Update("UPDATE peminjaman SET tempat_peminjaman=#{tempatPeminjaman}, tujuan_pinjam=#{tujuanPinjam}, deskripsi=#{deskripsi}, tanggal_pinjam=#{tanggalPinjam}, tanggal_pengembalian=#{tanggalPengembalian} "
 			+ "WHERE id = #{id}")
 	void editPeminjaman(PeminjamanModel peminjaman);
+
+	// @Update("UPDATE peminjaman SET is_delete=#{isDelete} " + "WHERE id =
+	// #{id}")
+	// void deletePeminjaman(PeminjamanModel peminjaman);
+	@Update("UPDATE peminjaman SET is_delete=1 " + "WHERE id = #{id}")
+	void deletePeminjaman(@Param("id") String id);
 }

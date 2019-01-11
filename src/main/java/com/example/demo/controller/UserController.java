@@ -78,15 +78,15 @@ public class UserController {
 	}
 
 	@RequestMapping("/sipen/TambahPeminjaman")
-	public String buatPeminjaman(Model model){
+	public String buatPeminjaman(Model model) {
 		PeminjamanModel peminjamanModel = new PeminjamanModel();
 		model.addAttribute("peminjamanModel", peminjamanModel);
 		return "formTambahPeminjaman";
 	}
-	
+
 	@PostMapping("/sipen/TambahPeminjaman/submit")
-	public String buatPeminjamanSubmit(Model model,  @ModelAttribute PeminjamanModel peminjamanModel){
-		System.out.println("barang "+peminjamanModel);
+	public String buatPeminjamanSubmit(Model model, @ModelAttribute PeminjamanModel peminjamanModel) {
+		System.out.println("barang " + peminjamanModel);
 		peminjamService.tambahPeminjaman(peminjamanModel);
 		return "redirect:/sipen";
 	}
@@ -104,10 +104,30 @@ public class UserController {
 		System.out.println("bibip bibip bibip ...  Peminjaman akan diedut");
 		System.out.println("peminjaman " + peminjamanModel);
 		peminjamService.editPeminjaman(peminjamanModel);
-		redirectAttributes.addFlashAttribute("sukses", "Data berhasil dirubah");
+		redirectAttributes.addFlashAttribute("sukses", "Data berhasil diubah");
 		return "redirect:/sipen/EditPeminjaman/" + peminjamanModel.id;
 	}
 
+//	@PostMapping("/sipen/DeletePeminjaman/submit")
+//	public String deletePeminjamanSubmit(Model model, RedirectAttributes redirectAttributes,
+//			@ModelAttribute PeminjamanModel peminjamanModel) {
+//		System.out.println("bibip bibip bibip ...  Peminjaman akan dihapus");
+//		System.out.println("peminjaman " + peminjamanModel);
+//		peminjamService.deletePeminjaman(peminjamanModel);
+//		redirectAttributes.addFlashAttribute("sukses", "Data berhasil dihapus");
+//		return "redirect:/sipen/" + peminjamanModel.id;
+//	}
+
+	//
+	@RequestMapping("/sipen/DeletePeminjaman/{id}")
+	public String deletePeminjaman(Model model, @PathVariable(value = "id") String id) {
+//		PeminjamanModel peminjaman = peminjamService.getPeminjamanbyID(id);
+		//		model.addAttribute("peminjaman", peminjaman);
+		peminjamService.deletePeminjaman(id);
+		return "redirect:/sipen/";
+	}
+
+	//
 	@RequestMapping("/sipen/TambahkankePinjaman/{id}")
 	public String tambahBarang(Model model, @PathVariable(value = "id") String id) {
 		PeminjamanModel peminjaman = peminjamService.getPeminjamanbyID(id);

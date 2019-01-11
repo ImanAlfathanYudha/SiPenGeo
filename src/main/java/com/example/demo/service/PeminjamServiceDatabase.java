@@ -25,7 +25,7 @@ public class PeminjamServiceDatabase implements UserService {
 
 	@Autowired
 	private BarangMapper barangMapper;
-	
+
 	@Autowired
 	private PeminjamanMapper peminjamanMapper;
 
@@ -100,5 +100,17 @@ public class PeminjamServiceDatabase implements UserService {
 		PeminjamanModel peminjamanTerakhir = peminjamanMapper.peminjamanTerakhir();
 		peminjamanTerakhir.setTanggalPerubahan(java.time.LocalDate.now().toString());
 		peminjamanMapper.updateTanggalPerubahan(peminjamanTerakhir);
+	}
+
+	// public void deletePeminjaman(PeminjamanModel peminjaman) {
+	// // TODO Auto-generated method stub
+	// log.info("delete peminjaman " + peminjaman);
+	// peminjamanMapper.deletePeminjaman(peminjaman);
+	// }
+	public void deletePeminjaman(String id) {
+		// TODO Auto-generated method stub
+		log.info("delete peminjaman nomor" + id);
+		peminjamanMapper.deletePeminjaman(id);
+		System.out.println(getPeminjamanbyID(id).isDelete);
 	}
 }

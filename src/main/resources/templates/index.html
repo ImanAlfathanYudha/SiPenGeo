@@ -66,8 +66,11 @@
 													th:href="'/sipen/EditPeminjaman/' + ${listPeminjaman.id}">
 														<i>Edit</i>
 												</a></li>
-												<li><a type="button" href="#" data-toggle="modal"
-													data-target="#logoutDelete"> <i>Hapus</i>
+												<li><a type="button"
+													th:href="'/sipen/DeletePeminjaman/' + ${listPeminjaman.id}">
+														<!-- data-toggle="modal" data-target="#logoutDelete" --> 
+														
+														<i>Hapus</i>
 												</a></li>
 											</ul></td>
 									</tr>
@@ -113,7 +116,7 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="index.html">iya</a>
+					<a class="btn btn-primary" th:href="'/sipen/'">iya</a>
 				</div>
 			</div>
 		</div>
