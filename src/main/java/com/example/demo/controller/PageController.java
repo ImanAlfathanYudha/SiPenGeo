@@ -90,7 +90,19 @@ public class PageController {
 		redirectAttributes.addFlashAttribute("sukses","Data berhasil dirubah");
 		return "redirect:/sipen/EditBarang/" + barangModel.id;
 	}
-
+	
+	@RequestMapping("/sipen/HapusBarang/{id}")
+	public String hapusBarang(Model model, @PathVariable(value = "id") String id){
+		BarangModel barang = barangService.getBarangById(id);
+		System.out.println("barang yang mau diapus "+ barang);
+		if(barang!=null){
+			System.out.println("if barang ga null "+ barang);
+			barangService.deleteBarang(barang);
+			return "redirect:/sipen/LihatBarang";
+		}
+		return "redirect:/sipen";
+	}
+	
 	@RequestMapping("/sipen/KonfirmasiPeminjaman/{id}")
 	public String getPeminjamanbyIDAdm(Model model, @PathVariable(value = "id") String id) {
 		PeminjamanModel peminjaman = peminjamService.getPeminjamanbyID(id);

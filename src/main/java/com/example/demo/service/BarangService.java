@@ -11,4 +11,6 @@ public interface BarangService {
 	BarangModel getBarangById(String id);
 	
 	void addBarang(BarangModel barang);
+	
+	void deleteBarang(BarangModel barang);
 }

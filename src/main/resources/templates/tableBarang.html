@@ -16,7 +16,8 @@
 			<div class="container-fluid">
 				<!-- Breadcrumbs-->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><p>List barang-barang yang tersedia</p></li>
+					<li class="breadcrumb-item"><p>List barang-barang yang
+							tersedia</p></li>
 				</ol>
 				<!-- Icon Cards-->
 				<div class="row"></div>
@@ -65,17 +66,18 @@
 												<li><a type="button"
 													th:href="'/sipen/EditBarang/' + ${listBarang.id}"> <i>Edit</i>
 												</a></li>
-												<li><a type="button" href="#" data-toggle="modal"
-													data-target="#logoutDelete"> <i>Hapus</i>
+												<li><a href="#" type="button" data-toggle="modal" data-target="#logoutDelete"
+													th:attr="data-target='#logoutDelete'+${listBarang.id }">
+														<i>Hapus</i>
 												</a></li>
 											</ul></td>
 									</tr>
 									<!-- Delete peminjaman Modal-->
-									<div class="modal fade" id="logoutDelete" tabindex="-1"
-										role="dialog" aria-labelledby="exampleModalLabel"
-										aria-hidden="true">
+									<div class="modal fade"  th:id="logoutDelete+${listBarang.id}"
+										tabindex="-1" role="dialog"
+										aria-labelledby="exampleModalLabel" aria-hidden="true">
 										<div class="modal-dialog" role="document">
-											<div class="modal-content" >
+											<div class="modal-content">
 												<div class="modal-header">
 													<h5 class="modal-title" id="exampleModalLabel">Apa
 														anda yakin ingin menghapusnya?</h5>
@@ -89,7 +91,8 @@
 												<div class="modal-footer">
 													<button class="btn btn-secondary" type="button"
 														data-dismiss="modal">Cancel</button>
-													<a class="btn btn-primary" th:href="'/sipen/LihatBarang/'">Iya</a>
+													<a class="btn btn-primary"
+														th:href="@{/sipen/HapusBarang/{id}(id=${listBarang.id})}">Iya</a>
 												</div>
 											</div>
 											<!-- Taruh each loop di sini -->

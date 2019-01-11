@@ -13,6 +13,7 @@ import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.model.BarangDipinjamModel;
 import com.example.demo.model.BarangModel;
+import com.example.demo.model.PeminjamanModel;
 
 @Mapper
 public interface BarangMapper {
@@ -45,4 +46,9 @@ public interface BarangMapper {
 	@Update("UPDATE barang SET nama_barang=#{namaBarang}, tipe=#{tipe}, tahun=#{tahun}, harga_jamin=#{hargaJamin}, kuantitas=#{kuantitas} "
 			+ "WHERE id = #{id}")
 	void editBarang(BarangModel barang);
+	
+	@Update("UPDATE barang "
+			+ "SET is_delete = '1'"
+			+ "WHERE id = #{id} ")
+	void deleteBarangById(BarangModel barang);
 }

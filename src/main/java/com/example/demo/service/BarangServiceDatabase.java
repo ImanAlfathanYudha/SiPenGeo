@@ -44,4 +44,10 @@ public class BarangServiceDatabase implements BarangService {
 		barangMapper.editBarang(barang);
 	}
 
+	@Override
+	public void deleteBarang(BarangModel barang) {
+		// TODO Auto-generated method stub
+		barangMapper.deleteBarangById(barang);
+	}
+
 }
