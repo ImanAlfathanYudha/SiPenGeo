@@ -28,7 +28,7 @@ public interface UserMapper {
 	@Select("select * from user where id = #{id}")
 	UserModel selectUserById(@Param("id") String id);
 
-	@Select("SELECT *" + "FROM peminjaman " + "order by tanggal_perubahan")
+	@Select("SELECT * FROM peminjaman " + "where is_delete=0")
 	@Results(value = { @Result(property = "idPeminjam", column = "id_peminjam"),
 			@Result(property = "tujuanPinjam", column = "tujuan_pinjam"),
 			@Result(property = "tempatPeminjaman", column = "tempat_peminjaman"),

@@ -107,10 +107,10 @@ public class PeminjamServiceDatabase implements UserService {
 	// log.info("delete peminjaman " + peminjaman);
 	// peminjamanMapper.deletePeminjaman(peminjaman);
 	// }
-	public void deletePeminjaman(String id) {
+	public void deletePeminjaman(PeminjamanModel peminjaman) {
 		// TODO Auto-generated method stub
-		log.info("delete peminjaman nomor" + id);
-		peminjamanMapper.deletePeminjaman(id);
-		System.out.println(getPeminjamanbyID(id).isDelete);
+		log.info("delete peminjaman nomor" + peminjaman);
+		peminjamanMapper.deletePeminjaman(peminjaman);
+		System.out.println(peminjaman.isDelete);
 	}
 }

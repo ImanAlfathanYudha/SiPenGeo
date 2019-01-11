@@ -108,22 +108,29 @@ public class UserController {
 		return "redirect:/sipen/EditPeminjaman/" + peminjamanModel.id;
 	}
 
-//	@PostMapping("/sipen/DeletePeminjaman/submit")
-//	public String deletePeminjamanSubmit(Model model, RedirectAttributes redirectAttributes,
-//			@ModelAttribute PeminjamanModel peminjamanModel) {
-//		System.out.println("bibip bibip bibip ...  Peminjaman akan dihapus");
-//		System.out.println("peminjaman " + peminjamanModel);
-//		peminjamService.deletePeminjaman(peminjamanModel);
-//		redirectAttributes.addFlashAttribute("sukses", "Data berhasil dihapus");
-//		return "redirect:/sipen/" + peminjamanModel.id;
-//	}
+	// @PostMapping("/sipen/DeletePeminjaman/submit")
+	// public String deletePeminjamanSubmit(Model model, RedirectAttributes
+	// redirectAttributes,
+	// @ModelAttribute PeminjamanModel peminjamanModel) {
+	// System.out.println("bibip bibip bibip ... Peminjaman akan dihapus");
+	// System.out.println("peminjaman " + peminjamanModel);
+	// peminjamService.deletePeminjaman(peminjamanModel);
+	// redirectAttributes.addFlashAttribute("sukses", "Data berhasil dihapus");
+	// return "redirect:/sipen/" + peminjamanModel.id;
+	// }
 
 	//
-	@RequestMapping("/sipen/DeletePeminjaman/{id}")
+	@RequestMapping("/sipen/HapusPeminjaman/{id}")
 	public String deletePeminjaman(Model model, @PathVariable(value = "id") String id) {
-//		PeminjamanModel peminjaman = peminjamService.getPeminjamanbyID(id);
-		//		model.addAttribute("peminjaman", peminjaman);
-		peminjamService.deletePeminjaman(id);
+		PeminjamanModel peminjaman = peminjamService.getPeminjamanbyID(id);
+		System.out.println("peminjaman yang mau diapus " + peminjaman);
+		// model.addAttribute("peminjaman", peminjaman);
+		if (peminjaman != null) {
+			System.out.println("peminjaman ga null "+peminjaman);
+			peminjamService.deletePeminjaman(peminjaman);
+			return "redirect:/sipen";
+		}
+
 		return "redirect:/sipen/";
 	}
 
