@@ -28,7 +28,7 @@ public interface UserMapper {
 	@Select("select * from user where id = #{id}")
 	UserModel selectUserById(@Param("id") String id);
 
-	@Select("SELECT * FROM peminjaman " + "where is_delete=0")
+	@Select("SELECT * FROM peminjaman P, konfirmasi_peminjaman KP" + " where is_delete=0 AND KP.id_peminjaman=P.id")
 	@Results(value = { @Result(property = "idPeminjam", column = "id_peminjam"),
 			@Result(property = "tujuanPinjam", column = "tujuan_pinjam"),
 			@Result(property = "tempatPeminjaman", column = "tempat_peminjaman"),
@@ -37,7 +37,7 @@ public interface UserMapper {
 			@Result(property = "totalHargaJaminan", column = "total_harga_jaminan"),
 			@Result(property = "tanggalPerubahan", column = "tanggal_perubahan"),
 			@Result(property = "userPeminjam", column = "id_peminjam", javaType = UserModel.class, many = @Many(select = "selectUserById")),
-			@Result(property = "listKonfirmasi", column = "id_peminjaman", javaType = List.class, many = @Many(select = "KonfirmasiPeminjamanMapper.getAllKonfirmasi")) })
+			@Result(property = "listKonfirmasi", column = "id_peminjaman", javaType = List.class, many = @Many(select = "getAllKonfirmasi")) })
 	List<PeminjamanModel> getAllPeminjaman();
 
 	// @Select("SELECT * FROM barang_dipinjam")
@@ -77,4 +77,15 @@ public interface UserMapper {
 	@Update("UPDATE user " + "SET nama=#{nama}, instansi=#{instansi}, telepon=#{telepon}, alamat=#{alamat} "
 			+ "WHERE id = #{id}")
 	void updateProfilPeminjam(UserModel user);
+		
+	@Select("SELECT * FROM konfirmasi_peminjaman where id_peminjaman=#{id}")
+	@Results(value = {
+			@Result(property = "idPetugas", column = "id_petugas"),
+			@Result(property = "idDosen", column = "id_dosen"),
+			@Result(property = "idPeminjaman", column = "id_peminjaman"),
+			@Result(property = "statusKonfirmasi", column = "status_konfirmasi"),
+			@Result(property = "keterangan", column = "keterangan"),
+	}) 
+	List<KonfirmasiPeminjamanModel> getAllKonfirmasi(@Param("id") String id);
+
 }
