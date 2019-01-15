@@ -36,6 +36,7 @@ public interface UserMapper {
 			@Result(property = "tanggalPengembalian", column = "tanggal_pengembalian"),
 			@Result(property = "totalHargaJaminan", column = "total_harga_jaminan"),
 			@Result(property = "tanggalPerubahan", column = "tanggal_perubahan"),
+			@Result(property = "statusKonfirmasi", column = "status_konfirmasi"),
 			@Result(property = "userPeminjam", column = "id_peminjam", javaType = UserModel.class, many = @Many(select = "selectUserById")),
 			@Result(property = "listKonfirmasi", column = "id_peminjaman", javaType = List.class, many = @Many(select = "getAllKonfirmasi")) })
 	List<PeminjamanModel> getAllPeminjaman();

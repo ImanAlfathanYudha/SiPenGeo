@@ -17,7 +17,8 @@
 				<!-- Breadcrumbs-->
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="/sipen/">Dashboard</a></li>
-					<li class="breadcrumb-item active">Daftar Konfirmasi Peminjaman</li>
+					<li class="breadcrumb-item active">Daftar Konfirmasi
+						Peminjaman</li>
 				</ol>
 				<!--end Breadcrumbs-->
 				<!-- Icon Cards-->
@@ -63,22 +64,25 @@
 										<td th:text=" ${listPeminjaman.tanggalPinjam}">2018/01/25</td>
 										<td th:text=" ${listPeminjaman.tanggalPengembalian}">2018/01/28</td>
 										<td th:text=" ${listPeminjaman.totalHargaJaminan}">2018/01/28</td>
-										<td>
-											<div
-												th:each="listKonfirmasi,iterationStatus: ${listPeminjaman.listKonfirmasi}">
-												<ul>
-													<li><i></i></li>
-												</ul>
-											</div>
-										</td>
+										<td th:text=" ${listPeminjaman.statusKonfirmasi}">2018/01/28</td>
+										<!-- <td>
+										<div
+											th:each="listKonfirmasi,iterationStatus: ${listPeminjaman.listKonfirmasi}">
+											<ul>
+												<li><i th:text=" ${listKonfirmasi.statusKonfirmasi}"></i></li>
+											</ul>
+										</div>
+										</td> -->
 										<td><ul>
-										<!--	<li><a type="button" href="peminjaman.html"> <i>Lihat</i>
+												<li><a type="button"
+													th:href="'/sipen/LihatPeminjaman/' + ${listPeminjaman.id}">
+												<i>Lihat</i>
 												</a></li>
 												<li><a type="button" href="#"> <i>Edit</i>
 												</a></li>
 										 		<li><a type="button" href="#" data-toggle="modal"
 													data-target="#logoutDelete"> <i>Hapus</i>
-												</a></li> -->
+												</a></li>
 											</ul></td>
 									</tr>
 								</div>
