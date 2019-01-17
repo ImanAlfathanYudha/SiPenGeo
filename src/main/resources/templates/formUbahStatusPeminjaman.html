@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head::head">
-<title>Ubah Status Peminjaman Peminjaman </title>
+<title>Ubah Status Peminjaman Peminjaman</title>
 </head>
 <body id="page-top">
-		<!-- Header -->
+	<!-- Header -->
 	<nav th:replace="fragments/body::header"></nav>
 	<!-- end Header -->
 	<div id="wrapper">
@@ -51,14 +51,13 @@
 						<div th:each="peminjaman,iterationStatus: ${peminjaman}">
 							<div class="col-md-6">
 								<p th:text="'Tujuan Peminjaman: '+ ${peminjaman.tujuanPinjam}">Tujuan
-									Peminjaman: Penelitian</p>	
-								<p
-									th:text="'Deskripsi Peminjaman: '+ ${peminjaman.deskripsi}">Untuk dipinjam</p>	
+									Peminjaman: Penelitian</p>
+								<p th:text="'Deskripsi Peminjaman: '+ ${peminjaman.deskripsi}">Untuk
+									dipinjam</p>
 								<p
 									th:text="'Tempat Penggunaan: '+ ${peminjaman.tempatPeminjaman}">Tempat
 									Penggunaan: Fakultas Ilmu Komputer UI</p>
-								<p
-									th:text="'Tanggal Peminjaman: '+ ${peminjaman.tanggalPinjam}">Tanggal
+								<p th:text="'Tanggal Peminjaman: '+ ${peminjaman.tanggalPinjam}">Tanggal
 									Peminjaman: 20/01/2018</p>
 								<p
 									th:text="'Tanggal Pengembalian: '+ ${peminjaman.tanggalPengembalian}">Tanggal
@@ -94,7 +93,7 @@
 								</div>
 							</table>
 							<p>Harga jaminan:</p>
-							
+
 						</div>
 					</div>
 					<!--end Tabel barang-->
@@ -104,12 +103,16 @@
 						<i class="fas fa-flag-usa"></i> &#10004; Ubah Status peminjaman
 					</div>
 					<div class="card-body">
-						<form>
+						<form th:object="${konfirmasiPeminjaman}"
+							th:action="@{/sipen/KonfirmasiPeminjaman/submit}" method="post">
 							<div class="form-group">
 								<div class="form-label-group">
-									<select name="tujuanKonfirmasi">
+									<select name="statusKonfirmasi" th:field="*{statusKonfirmasi}">
 										<option value="Dilaporkan">Dilaporkan</option>
 										<option value="Ditolak">Ditolak</option>
+										<option value="Selesai_Meminjam">Selesai Meminjam</option>
+										<option value="Butuh_Permohonan_Pengantar">Butuh Permohonan Pengantar</option>
+										<option value="Barang_Diserahkan">Ditolak</option>
 										<option value="Diterima">Diterima</option>
 									</select>
 								</div>
@@ -118,13 +121,13 @@
 								<div class="form-label-group">
 									<textarea type="text" id="inputKeterangan" class="form-control"
 										placeholder="Tuliskan keterangan" required="required"
-										autofocus="autofocus"></textarea>
+										autofocus="autofocus" th:field="*{keterangan}"></textarea>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-4">
-									<a class="btn btn-primary btn-block"
-										href="">Pilih</a>
+									<button class="btn btn-primary btn-block" type="submit"
+										name="action" value="save">Ubah Konfirmasi</button>
 								</div>
 							</div>
 						</form>
@@ -149,7 +152,7 @@
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i>
-	</a>	
+	</a>
 	<!-- Logout Modal-->
 	<div th:replace="fragments/body::modalLogout"></div>
 	<!-- end Logout Modal-->
