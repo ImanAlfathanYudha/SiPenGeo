@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 public class PeminjamanModel {
 	public Integer id;
 	public String idPeminjam;
+	public String idKonfirmasi;
+	public String idPeminjaman;
 	public String tujuanPinjam;
 	public String deskripsi;
 	public String tempatPeminjaman;

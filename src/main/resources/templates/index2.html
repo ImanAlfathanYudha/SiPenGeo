@@ -75,12 +75,14 @@
 										</td> -->
 										<td><ul>
 												<li><a type="button"
-													th:href="'/sipen/LihatPeminjaman/' + ${listPeminjaman.id}">
-												<i>Lihat</i>
+													th:href="'/sipen/LihatPeminjaman/' + ${listPeminjaman.idPeminjaman}">
+														<i>Lihat</i>
 												</a></li>
-												<li><a type="button" href="#"> <i>Edit</i>
+												<li><a type="button"
+													th:href="'/sipen/KonfirmasiPeminjaman/' + ${listPeminjaman.idKonfirmasi}">
+														<i>Edit</i>
 												</a></li>
-										 		<li><a type="button" href="#" data-toggle="modal"
+												<li><a type="button" href="#" data-toggle="modal"
 													data-target="#logoutDelete"> <i>Hapus</i>
 												</a></li>
 											</ul></td>

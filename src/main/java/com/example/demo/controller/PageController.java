@@ -84,36 +84,36 @@ public class PageController {
 	}
 
 	@PostMapping("/sipen/EditBarang/submit")
-	public String editBarangSubmit(Model model, RedirectAttributes redirectAttributes, @ModelAttribute BarangModel barangModel) {
+	public String editBarangSubmit(Model model, RedirectAttributes redirectAttributes,
+			@ModelAttribute BarangModel barangModel) {
 		System.out.println("barang " + barangModel);
 		barangService.editBarang(barangModel);
-		redirectAttributes.addFlashAttribute("sukses","Data berhasil dirubah");
+		redirectAttributes.addFlashAttribute("sukses", "Data berhasil dirubah");
 		return "redirect:/sipen/EditBarang/" + barangModel.id;
 	}
-	
+
 	@RequestMapping("/sipen/HapusBarang/{id}")
-	public String hapusBarang(Model model, @PathVariable(value = "id") String id){
+	public String hapusBarang(Model model, @PathVariable(value = "id") String id) {
 		BarangModel barang = barangService.getBarangById(id);
-		System.out.println("barang yang mau diapus "+ barang);
-		if(barang!=null){
-			System.out.println("if barang ga null "+ barang);
+		System.out.println("barang yang mau diapus " + barang);
+		if (barang != null) {
+			System.out.println("if barang ga null " + barang);
 			barangService.deleteBarang(barang);
 			return "redirect:/sipen/LihatBarang";
 		}
 		return "redirect:/sipen";
 	}
-	
+
 	@RequestMapping("/sipen/KonfirmasiPeminjaman/{id}")
 	public String getPeminjamanbyIDAdm(Model model, @PathVariable(value = "id") String id) {
-		PeminjamanModel peminjaman = peminjamService.getPeminjamanbyID(id);
-		if (peminjaman != null) {
-			List<BarangDipinjamModel> listBarangDipinjam = peminjaman.listBarangDipinjam;
-			List<KonfirmasiPeminjamanModel> listKonfirmasi = peminjaman.listKonfirmasi;
-			UserModel yangPinjam = peminjamService.selectUserById(peminjaman.idPeminjam);
-			model.addAttribute("yangPinjam", yangPinjam);
-			model.addAttribute("peminjaman", peminjaman);
-			model.addAttribute("listBarangDipinjam", listBarangDipinjam);
-			model.addAttribute("listKonfirmasi", listKonfirmasi);
+		// PeminjamanModel peminjaman = peminjamService.getPeminjamanbyID(id);
+		KonfirmasiPeminjamanModel konfirmasiPeminjaman = peminjamService.getKonfirmasiPeminjamanbyID(id);
+		if (konfirmasiPeminjaman != null) {
+			System.out.println("ga null "+konfirmasiPeminjaman);			
+			model.addAttribute("konfirmasiPeminjaman", konfirmasiPeminjaman);
+			model.addAttribute("yangPinjam", konfirmasiPeminjaman.peminjaman.userPeminjam);
+			model.addAttribute("listBarangDipinjam",konfirmasiPeminjaman.peminjaman.listBarangDipinjam);
+			model.addAttribute("peminjaman", konfirmasiPeminjaman.peminjaman);
 			return "formUbahStatusPeminjaman";
 		} else {
 			return "redirect:/sipen";

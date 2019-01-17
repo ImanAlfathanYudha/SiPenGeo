@@ -16,4 +16,5 @@ public class KonfirmasiPeminjamanModel {
 	public Integer idPeminjaman;
 	public String statusKonfirmasi;
 	public String keterangan;
+	public PeminjamanModel peminjaman;
 }

@@ -51,7 +51,9 @@
 						<div th:each="peminjaman,iterationStatus: ${peminjaman}">
 							<div class="col-md-6">
 								<p th:text="'Tujuan Peminjaman: '+ ${peminjaman.tujuanPinjam}">Tujuan
-									Peminjaman: Penelitian</p>
+									Peminjaman: Penelitian</p>	
+								<p
+									th:text="'Deskripsi Peminjaman: '+ ${peminjaman.deskripsi}">Untuk dipinjam</p>	
 								<p
 									th:text="'Tempat Penggunaan: '+ ${peminjaman.tempatPeminjaman}">Tempat
 									Penggunaan: Fakultas Ilmu Komputer UI</p>
@@ -92,7 +94,7 @@
 								</div>
 							</table>
 							<p>Harga jaminan:</p>
-							<p th:text="'Rp.'+${peminjaman.totalHargaJaminan}">Rp10.000,-</p>
+							
 						</div>
 					</div>
 					<!--end Tabel barang-->
