@@ -109,15 +109,25 @@ public class PageController {
 		// PeminjamanModel peminjaman = peminjamService.getPeminjamanbyID(id);
 		KonfirmasiPeminjamanModel konfirmasiPeminjaman = peminjamService.getKonfirmasiPeminjamanbyID(id);
 		if (konfirmasiPeminjaman != null) {
-			System.out.println("ga null "+konfirmasiPeminjaman);			
+			System.out.println("ga null " + konfirmasiPeminjaman);
 			model.addAttribute("konfirmasiPeminjaman", konfirmasiPeminjaman);
 			model.addAttribute("yangPinjam", konfirmasiPeminjaman.peminjaman.userPeminjam);
-			model.addAttribute("listBarangDipinjam",konfirmasiPeminjaman.peminjaman.listBarangDipinjam);
+			model.addAttribute("listBarangDipinjam", konfirmasiPeminjaman.peminjaman.listBarangDipinjam);
 			model.addAttribute("peminjaman", konfirmasiPeminjaman.peminjaman);
 			return "formUbahStatusPeminjaman";
 		} else {
 			return "redirect:/sipen";
 		}
+	}
+
+	@PostMapping("/sipen/KonfirmasiPeminjaman/submit")
+	public String editKonfirmasiPeminjamanSubmit(Model model, RedirectAttributes redirectAttributes,
+			@ModelAttribute KonfirmasiPeminjamanModel konfirmasiPeminjaman) {
+		peminjamService.editKonfirmasi(konfirmasiPeminjaman);
+		System.out.println("konfirmasi " + konfirmasiPeminjaman.id + ": "
+				+ peminjamService.getKonfirmasiPeminjamanbyID(konfirmasiPeminjaman.id.toString()));
+		redirectAttributes.addFlashAttribute("sukses", "Data berhasil dirubah");
+		return "redirect:/sipen/adm/";
 	}
 
 }

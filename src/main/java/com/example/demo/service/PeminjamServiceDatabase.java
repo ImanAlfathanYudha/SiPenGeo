@@ -66,14 +66,16 @@ public class PeminjamServiceDatabase implements UserService {
 
 	public KonfirmasiPeminjamanModel getKonfirmasiPeminjamanbyID(String id) {
 		KonfirmasiPeminjamanModel konfirmasiPeminjaman = userMapper.getKonfirmasiPeminjamanbyID(id);
-//		konfirmasiPeminjam.listBarangDipinjam = getAllBarangDipinjam(id);
-//		konfirmasiPeminjam.listKonfirmasi = getAllKonfirmasi(id);
+		// konfirmasiPeminjam.listBarangDipinjam = getAllBarangDipinjam(id);
+		// konfirmasiPeminjam.listKonfirmasi = getAllKonfirmasi(id);
 		konfirmasiPeminjaman.peminjaman = userMapper.getPeminjamanbyID(konfirmasiPeminjaman.idPeminjaman.toString());
-		konfirmasiPeminjaman.peminjaman.listBarangDipinjam = barangMapper.getAllBarangDipinjam(konfirmasiPeminjaman.peminjaman.id.toString());
-		konfirmasiPeminjaman.peminjaman.userPeminjam = userMapper.selectUserById(konfirmasiPeminjaman.peminjaman.idPeminjam.toString());
-		log.info("konfirmasi peminjaman",konfirmasiPeminjaman);
-		log.info("peminjaman di konfirmasi ",konfirmasiPeminjaman.peminjaman);
-		log.info("sapa yg minjem ",konfirmasiPeminjaman.peminjaman.userPeminjam);
+		konfirmasiPeminjaman.peminjaman.listBarangDipinjam = barangMapper
+				.getAllBarangDipinjam(konfirmasiPeminjaman.peminjaman.id.toString());
+		konfirmasiPeminjaman.peminjaman.userPeminjam = userMapper
+				.selectUserById(konfirmasiPeminjaman.peminjaman.idPeminjam.toString());
+		log.info("konfirmasi peminjaman", konfirmasiPeminjaman);
+		log.info("peminjaman di konfirmasi ", konfirmasiPeminjaman.peminjaman);
+		log.info("sapa yg minjem ", konfirmasiPeminjaman.peminjaman.userPeminjam);
 		System.out.println(konfirmasiPeminjaman);
 		return konfirmasiPeminjaman;
 	}
@@ -126,6 +128,11 @@ public class PeminjamServiceDatabase implements UserService {
 		log.info("delete peminjaman nomor" + peminjaman);
 		peminjamanMapper.deletePeminjaman(peminjaman);
 		System.out.println(peminjaman.isDelete);
+	}
+
+	public void editKonfirmasi(KonfirmasiPeminjamanModel konfirmasiPeminjaman) {
+		log.info("edit konfirmasi peminjaman " + konfirmasiPeminjaman);
+		userMapper.editKonfirmasi(konfirmasiPeminjaman);
 	}
 
 }
