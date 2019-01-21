@@ -86,7 +86,7 @@ public interface UserMapper {
 			@Result(property = "keterangan", column = "keterangan") })
 	KonfirmasiPeminjamanModel getKonfirmasiPeminjamanbyID(@Param("id") String id);
 
-	@Update("UPDATE konfirmasi_peminjaman " + "SET status_konfirmasi=#{statusKonfirmasi} " + "WHERE id = #{id}")
+	@Update("UPDATE konfirmasi_peminjaman " + "SET status_konfirmasi=#{statusKonfirmasi}, keterangan=#{keterangan} " + "WHERE id = #{id}")
 	void editKonfirmasi(KonfirmasiPeminjamanModel konfirmasi);
 
 	@Update("UPDATE user " + "SET nama=#{nama}, instansi=#{instansi}, telepon=#{telepon}, alamat=#{alamat} "
