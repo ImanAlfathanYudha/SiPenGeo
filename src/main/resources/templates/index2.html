@@ -65,24 +65,9 @@
 										<td th:text=" ${listPeminjaman.tanggalPengembalian}">2018/01/28</td>
 										<td th:text=" ${listPeminjaman.totalHargaJaminan}">2018/01/28</td>
 										<td th:text=" ${listPeminjaman.statusKonfirmasi}">2018/01/28</td>
-										<!-- <td>
-										<div
-											th:each="listKonfirmasi,iterationStatus: ${listPeminjaman.listKonfirmasi}">
-											<ul>
-												<li><i th:text=" ${listKonfirmasi.statusKonfirmasi}"></i></li>
-											</ul>
-										</div>
-										</td> -->
-										<td><ul>
-												<li><a type="button"
-													th:href="'/sipen/LihatPeminjaman/' + ${listPeminjaman.idPeminjaman}">
-														<i>Lihat</i>
-												</a></li>
-												<li><a type="button"
-													th:href="'/sipen/KonfirmasiPeminjaman/' + ${listPeminjaman.idKonfirmasi}">
-														<i>Edit</i>
-												</a></li>												
-											</ul></td>
+										<td><a type="button"
+											th:href="'/sipen/KonfirmasiPeminjaman/' + ${listPeminjaman.idKonfirmasi}">
+												Ubah Status </a></td>
 									</tr>
 								</div>
 								<!-- end asli dari database -->
