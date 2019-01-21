@@ -14,6 +14,8 @@ public class UserModel {
 	public String npm;
 	public String nama;
 	public String username;
+	public String fakultas;
+	public String jurusan;
 	public String role;
 	public String instansi;
 	public String telepon;
