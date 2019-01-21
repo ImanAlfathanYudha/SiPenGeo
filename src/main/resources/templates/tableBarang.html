@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>Daftar Barang Tersedia</title>
 <head th:replace="fragments/head::head">
-<title>Lihat Barang Tersedia</title>
 </head>
 <body id="page-top">
 	<!-- Header -->
@@ -79,7 +79,8 @@
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 												<div class="modal-header">
-													<h5 class="modal-title" id="exampleModalLabel">Apa
+													<h5 class="modal-title" id="exampleModalLabel" th:text="'Apa
+														anda yakin ingin menghapus '+${listBarang.namaBarang}+'?'">Apa
 														anda yakin ingin menghapusnya?</h5>
 													<button class="close" type="button" data-dismiss="modal"
 														aria-label="Close">

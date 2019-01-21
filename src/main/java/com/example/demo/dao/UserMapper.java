@@ -30,7 +30,7 @@ public interface UserMapper {
 
 	@Select("SELECT P.id AS id_peminjaman, KP.id AS id_konfirmasi, P.id_peminjam, P.tujuan_pinjam, P.tempat_peminjaman, P.tanggal_pinjam, P.tanggal_pengembalian, P.total_harga_jaminan, P.tanggal_perubahan, KP.status_konfirmasi "
 			+ "FROM peminjaman P, konfirmasi_peminjaman KP" + " where is_delete=0 AND KP.id_peminjaman=P.id")
-	@Results(value = { @Result(property = "idPeminjam", column = "id_peminjam"),
+	@Results(value = { @Result(property = "id", column = "id_peminjam"),
 			@Result(property = "idKonfirmasi", column = "id_konfirmasi"),
 			@Result(property = "idPeminjaman", column = "id_peminjaman"),
 			@Result(property = "tujuanPinjam", column = "tujuan_pinjam"),

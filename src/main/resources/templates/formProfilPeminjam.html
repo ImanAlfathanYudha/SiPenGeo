@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/xhtml">
-<head th:replace="fragments/head::head">
 <title>Edit Profil Peminjam</title>
+<head th:replace="fragments/head::head">
+
 </head>
 <body id="page-top">
 	<!-- Header -->
@@ -38,7 +39,7 @@
 								<div class="col-md-6">
 									<div class="form-label-group">
 										<input id="id" type="hidden" class="form-control"
-											placeholder="id" th:field="*{id}" readonly = "true"></input>
+											placeholder="id" th:field="*{id}" readonly="true"></input>
 									</div>
 								</div>
 							</div>
@@ -47,8 +48,8 @@
 									<div class="form-label-group">
 										<input type="text" id="nama" class="form-control"
 											placeholder="First name" required="required"
-											autofocus="autofocus" th:field="*{nama}" readonly = "true"></input> <label
-											for="nama">Nama</label>
+											autofocus="autofocus" th:field="*{nama}" readonly="true"></input>
+										<label for="nama">Nama</label>
 									</div>
 								</div>
 							</div>
@@ -56,8 +57,8 @@
 								<div class="col-md-6">
 									<div class="form-label-group">
 										<input type="text" id="npm" class="form-control"
-											placeholder="NPM/NIP" required="required" th:field="*{npm}" readonly = "true"></input>
-										<label for="npm">NPM/NIP</label>
+											placeholder="NPM/NIP" required="required" th:field="*{npm}"
+											readonly="true"></input> <label for="npm">NPM/NIP</label>
 									</div>
 								</div>
 							</div>
@@ -65,8 +66,9 @@
 								<div class="col-md-6">
 									<div class="form-label-group">
 										<input type="text" id="fakultas" class="form-control"
-											placeholder="Fakultas" required="required" th:field="*{fakultas}" readonly = "true"></input>
-										<label for="fakultas">Fakultas</label>
+											placeholder="Fakultas" required="required"
+											th:field="*{fakultas}" readonly="true"></input> <label
+											for="fakultas">Fakultas</label>
 									</div>
 								</div>
 							</div>
@@ -74,8 +76,9 @@
 								<div class="col-md-6">
 									<div class="form-label-group">
 										<input type="text" id="jurusan" class="form-control"
-											placeholder="Jurusan" required="required" th:field="*{jurusan}" readonly = "true"></input>
-										<label for="jurusan">Jurusan</label>
+											placeholder="Jurusan" required="required"
+											th:field="*{jurusan}" readonly="true"></input> <label
+											for="jurusan">Jurusan</label>
 									</div>
 								</div>
 							</div>
@@ -113,8 +116,8 @@
 										th:text="${sukses}"></p>
 								</div>
 							</div> -->
-							<div th:if = "${sukses!=null}" class="alert alert-success">
-							<span th:text="${sukses}"></span>								
+							<div th:if="${sukses!=null}" class="alert alert-success">
+								<span th:text="${sukses}"></span>
 							</div>
 							<div class="row">
 								<div class="col-sm-4"></div>

@@ -1,8 +1,9 @@
 <!DOCTYPE html5>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/xhtml">
-<head th:replace="fragments/head::head">
 <title>Tambah Barang</title>
+<head th:replace="fragments/head::head">
+
 </head>
 <body id="page-top">
 	<!-- Header -->
@@ -39,8 +40,8 @@
 									<div class="form-label-group">
 										<input type="text" id="inputNamaBarang" class="form-control"
 											placeholder="Nama Barang" required="required"
-											autofocus="autofocus" th:field="*{namaBarang}"></input> <label for="inputNamaBarang">Nama
-											Barang</label>
+											autofocus="autofocus" th:field="*{namaBarang}"></input> <label
+											for="inputNamaBarang">Nama Barang</label>
 									</div>
 								</div>
 							</div>
@@ -57,8 +58,8 @@
 								<div class="col-md-6">
 									<div class="form-label-group">
 										<input type="number" id="inputTahun" class="form-control"
-											placeholder="Tahun" required="required" th:field="*{tahun}"></input> <label
-											for="inputTahun">Tahun</label>
+											placeholder="Tahun" required="required" th:field="*{tahun}"></input>
+										<label for="inputTahun">Tahun</label>
 									</div>
 								</div>
 							</div>
@@ -66,8 +67,9 @@
 								<div class="col-md-6">
 									<div class="form-label-group">
 										<input type="number" id="inputHargaJamin" class="form-control"
-											placeholder="Harga Jamin" required="required" th:field="*{hargaJamin}"></input><label
-											for="inputHargaJamin">Harga Jaminan</label>
+											placeholder="Harga Jamin" required="required"
+											th:field="*{hargaJamin}"></input><label for="inputHargaJamin">Harga
+											Jaminan</label>
 									</div>
 								</div>
 							</div>

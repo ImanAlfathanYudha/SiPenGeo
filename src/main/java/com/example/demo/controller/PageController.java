@@ -58,6 +58,7 @@ public class PageController {
 		List<PeminjamanModel> listPeminjaman = peminjamService.getAllPeminjaman();
 		System.out.println("tes tes " + listPeminjaman);
 		model.addAttribute("listPeminjaman", listPeminjaman);
+		model.addAttribute("judul", "Daftar Konfirmasi Peminjaman");
 		return "index2";
 	}
 

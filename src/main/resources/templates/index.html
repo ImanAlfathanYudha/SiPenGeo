@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head::head">
 <title>Sistem Peminjaman</title>
+<head th:replace="fragments/head::head">
 </head>
 <body id="page-top">
 	<!-- Header -->
@@ -60,7 +60,6 @@
 												<li><a type="button"
 													th:href="'/sipen/LihatPeminjaman/' + ${listPeminjaman.id}">
 														<i>Lihat</i>
-
 												</a></li>
 												<li><a type="button"
 													th:href="'/sipen/EditPeminjaman/' + ${listPeminjaman.id}">
@@ -74,7 +73,8 @@
 											</ul></td>
 									</tr>
 									<!-- Delete peminjaman Modal-->
-									<div class="modal fade" th:id="logoutDelete+${listPeminjaman.id}" tabindex="-1"
+									<div class="modal fade"
+										th:id="logoutDelete+${listPeminjaman.id}" tabindex="-1"
 										role="dialog" aria-labelledby="exampleModalLabel"
 										aria-hidden="true">
 										<div class="modal-dialog" role="document">
