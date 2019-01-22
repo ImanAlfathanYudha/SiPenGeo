@@ -34,8 +34,8 @@ public class PeminjamServiceDatabase implements UserService {
 
 	@Override
 	public List<PeminjamanModel> getAllPeminjaman() {
-		log.info("getAllList", userMapper.getAllPeminjaman());
-		return userMapper.getAllPeminjaman();
+		log.info("getAllList", peminjamanMapper.getAllPeminjamanTersedia());
+		return peminjamanMapper.getAllPeminjamanTersedia();
 	}
 
 	@Override
@@ -114,8 +114,24 @@ public class PeminjamServiceDatabase implements UserService {
 		log.info("tambah peminjaman" + peminjamanModel);
 		peminjamanMapper.addPeminjaman(peminjamanModel);
 		PeminjamanModel peminjamanTerakhir = peminjamanMapper.peminjamanTerakhir();
+		System.out.println("latest peminjaman "+peminjamanTerakhir);
 		peminjamanTerakhir.setTanggalPerubahan(java.time.LocalDate.now().toString());
 		peminjamanMapper.updateTanggalPerubahan(peminjamanTerakhir);
+		UserModel userPinjam = userMapper.selectUserById(peminjamanTerakhir.idPeminjam);
+		System.out.println("user yang pinjem trakhir "+userPinjam);
+		if (userPinjam.jurusan.equalsIgnoreCase("geografi")) {
+			System.out.println("internal");
+			if (userPinjam.role.equalsIgnoreCase("mahasiswa") || userPinjam.role.equalsIgnoreCase("dosen")) {
+				System.out.println("dosen ato mahasiswa");
+				konfirmasiMapper.buatKonfirmasiInternal(peminjamanTerakhir.id.toString());
+			} else {
+				System.out.println("selain dosen/mahasiswa");
+				konfirmasiMapper.buatKonfirmasiPetugasLab(peminjamanTerakhir.id.toString());
+			}
+		} else {
+			System.out.println("external");
+			konfirmasiMapper.buatKonfirmasiEksternal(peminjamanTerakhir.id.toString());
+		}
 	}
 
 	// public void deletePeminjaman(PeminjamanModel peminjaman) {

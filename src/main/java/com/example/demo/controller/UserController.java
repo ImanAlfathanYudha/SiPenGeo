@@ -107,18 +107,6 @@ public class UserController {
 		redirectAttributes.addFlashAttribute("sukses", "Data berhasil diubah");
 		return "redirect:/sipen/EditPeminjaman/" + peminjamanModel.id;
 	}
-
-	// @PostMapping("/sipen/DeletePeminjaman/submit")
-	// public String deletePeminjamanSubmit(Model model, RedirectAttributes
-	// redirectAttributes,
-	// @ModelAttribute PeminjamanModel peminjamanModel) {
-	// System.out.println("bibip bibip bibip ... Peminjaman akan dihapus");
-	// System.out.println("peminjaman " + peminjamanModel);
-	// peminjamService.deletePeminjaman(peminjamanModel);
-	// redirectAttributes.addFlashAttribute("sukses", "Data berhasil dihapus");
-	// return "redirect:/sipen/" + peminjamanModel.id;
-	// }
-
 	//
 	@RequestMapping("/sipen/HapusPeminjaman/{id}")
 	public String deletePeminjaman(Model model, @PathVariable(value = "id") String id) {

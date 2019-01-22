@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Param;
@@ -22,5 +23,18 @@ public interface KonfirmasiPeminjamanMapper {
 			@Result(property = "keterangan", column = "keterangan"),
 	}) 
 	List<KonfirmasiPeminjamanModel> getAllKonfirmasi(@Param("id") String id);
-
+	
+	@Insert("INSERT INTO konfirmasi_peminjaman ( `id_petugas`, `id_dosen`, `id_peminjaman`, `status_konfirmasi`, `keterangan`) "
+			+ "VALUES ('6', NULL, #{id}, 'Dilaporkan', NULL), "
+			+ "( NULL, '5', #{id}, 'Dilaporkan', NULL)")
+	void buatKonfirmasiEksternal(@Param("id") String id);
+	
+	@Insert("INSERT INTO konfirmasi_peminjaman ( `id_petugas`, `id_dosen`, `id_peminjaman`, `status_konfirmasi`, `keterangan`) "
+			+ "VALUES ('6', NULL, #{id}, 'Dilaporkan', NULL), "
+			+ "( NULL, '4', #{id}, 'Dilaporkan', NULL)")
+	void buatKonfirmasiInternal(@Param("id") String id);
+	
+	@Insert("INSERT INTO konfirmasi_peminjaman ( `id_petugas`, `id_dosen`, `id_peminjaman`, `status_konfirmasi`, `keterangan`) "
+			+ "VALUES ('6', NULL, #{id}, 'Dilaporkan', NULL)")
+	void buatKonfirmasiPetugasLab(@Param("id") String id);
 }

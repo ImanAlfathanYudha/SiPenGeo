@@ -18,11 +18,16 @@ import com.example.demo.model.UserModel;
 public interface PeminjamanMapper {
 
 	@Select("SELECT * FROM peminjaman " + "where is_delete=0")
-	@Results(value = { @Result(property = "tujuanPinjam", column = "tujuan_pinjam"),
-			@Result(property = "deskripsi", column = "deskripsi"),
+	@Results(value = { @Result(property = "idPeminjam", column = "id_peminjam"),
+			@Result(property = "idKonfirmasi", column = "id_konfirmasi"),
+			@Result(property = "idPeminjaman", column = "id_peminjaman"),
+			@Result(property = "tujuanPinjam", column = "tujuan_pinjam"),
+			@Result(property = "tempatPeminjaman", column = "tempat_peminjaman"),
 			@Result(property = "tanggalPinjam", column = "tanggal_pinjam"),
 			@Result(property = "tanggalPengembalian", column = "tanggal_pengembalian"),
-			@Result(property = "isDelete", column = "is_delete") })
+			@Result(property = "totalHargaJaminan", column = "total_harga_jaminan"),
+			@Result(property = "tanggalPerubahan", column = "tanggal_perubahan"),
+			@Result(property = "statusKonfirmasi", column = "status_konfirmasi") })
 	List<PeminjamanModel> getAllPeminjamanTersedia();
 
 	@Select("select * from peminjaman where id = #{id}")
@@ -51,10 +56,16 @@ public interface PeminjamanMapper {
 	// biar yuda yg bikin ini
 
 	@Select("SELECT * FROM peminjaman " + "ORDER BY ID DESC LIMIT 1")
+	@Results(value = { @Result(property = "idPeminjam", column = "id_peminjam"),
+			@Result(property = "tujuanPinjam", column = "tujuan_pinjam"),
+			@Result(property = "deskripsi", column = "deskripsi"),
+			@Result(property = "tanggalPinjam", column = "tanggal_pinjam"),
+			@Result(property = "tanggalPengembalian", column = "tanggal_pengembalian"),
+			@Result(property = "isDelete", column = "is_delete") })
 	PeminjamanModel peminjamanTerakhir();
 
 	@Insert("INSERT INTO peminjaman (`id_peminjam`, `tujuan_pinjam`, `deskripsi`, `tempat_peminjaman`, `tanggal_pinjam`, `tanggal_pengembalian`, `tanggal_pengembalian_barang`,  `tanggal_perubahan`, `total_harga_jaminan`, `is_delete`) "
-			+ "VALUES ('1', #{tujuanPinjam}, #{deskripsi}, #{tempatPeminjaman}, #{tanggalPinjam}, #{tanggalPengembalian}, #{tanggalPengembalian}, #{tanggalPinjam}, '0', '0')")
+			+ "VALUES ('5', #{tujuanPinjam}, #{deskripsi}, #{tempatPeminjaman}, #{tanggalPinjam}, #{tanggalPengembalian}, #{tanggalPengembalian}, #{tanggalPinjam}, '0', '0')")
 	void addPeminjaman(PeminjamanModel peminjamanModel);
 
 	@Update("UPDATE peminjaman " + "SET tanggal_perubahan = #{tanggalPerubahan} " + "WHERE id = #{id} ")
